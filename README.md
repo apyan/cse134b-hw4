@@ -1,2 +1,2 @@
-# cse134b-hw2
-The HTML skeleton for Assignment 2.
+# cse134b-hw4
+The prototype for Assignment 4.

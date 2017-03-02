@@ -19,17 +19,21 @@
 		
 		<form class="textLine_1">
 	    	Username:<br>
-	    	<input class="inputText" type="text" name="username">
+	    	<input id="username" class="inputText" type="text" name="username">
+	    	<br>
+		E-Mail Address:<br>
+	    	<input id="email" class="inputText" type="email" name="email">
 	    	<br>
 	    	Password:<br>
-	    	<input class="inputText" type="password" name="password">
+	    	<input id="password" class="inputText" type="password" name="password">
 	    	<br>
 	    	Re-Password:<br>
-	    	<input class="inputText" type="password" name="repassword">
+	    	<input id="password" class="inputText" type="password" name="repassword">
 	    	<br><br>
 	    	<!--change to submit-->
-	    	<input class="modButton" type="button" value="Sign Up" onclick="writeNewUserData(this.form.username.value,this.form.password.value)"/>
+	    	<input id="sign-up" class="modButton" type="button" value="Sign Up" onclick="signUpUserData()"/>
 		</form> 
+		<br><p id="test"></p>
 	</div>
   <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
   <script>
@@ -42,7 +46,66 @@
       messagingSenderId: "582801923363"
     };
     firebase.initializeApp(config);
+
+    // Testing Sign-Up Button
+    //var messagesRef = new Firebase('https://amiibodex.firebaseio.com/users');
+
+    // Sign-Up Button is pressed
+    function signUpUserData(){
+
+	// Test Statements
+	document.getElementById("test").innerHTML = "Creating user...";
+
+      var username = document.querySelector('#username').value;
+      var password = document.querySelector('#password').value
+      var email = document.querySelector('#email').value
+
+	// Test Statements
+	document.getElementById("test").innerHTML = username + " " + password + " " + email;
+
+      //var credential = firebase.auth.EmailAuthProvider.credential(email, password);
+      //var auth = firebase.auth();
+      //var currentUser = auth.currentUser;
+	/*firebase.auth().createUserWithEmailAndPassword(email, password).then(function(username) {
+    			var username = firebase.auth().currentUser;
+    			logUser(username, email, password);
+		}, function(error) {
+    			var errorCode = error.code;
+    			var errorMessage = error.message;
+	});
+
+	function logUser(username, email, password) {
+    		var ref = firebase.database().ref("users");
+    		var obj = {
+        		"user" : username,
+			"email" : email,
+        		"password" : password
+    		};
+    		ref.push(obj);
+	}*/
+
+	// Working Email and Password sign-in (Check Authentication -> Users)
+	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
+      });
+
+	//firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  	// Handle Errors here.
+  	//var errorCode = error.code;
+  	//var errorMessage = error.message;
+  	// ...
+	//});
+    }
   </script>
+
   <script type="text/javascript" src="test.js"></script>
   </body>
 </html>

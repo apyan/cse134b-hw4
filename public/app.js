@@ -1,3 +1,5 @@
+
+
 // Firebase AmiiboDex Keys
 var config = {
 	apiKey: "AIzaSyD3p9hdIYoCSi72wUMbPT-JkIzXPf6Xmrc",
@@ -9,3 +11,4 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+

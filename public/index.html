@@ -8,7 +8,9 @@
     <link rel="stylesheet" type="text/css" href="stylesheet/buttonDesign.css">
     <link rel="stylesheet" type="text/css" href="stylesheet/divDesign.css">
     <link rel="stylesheet" type="text/css" href="stylesheet/textDesign.css">
-    <script language="javascript" type="text/javascript" src="app.js"></script>
+    <!--<script language="javascript" type="text/javascript" src="app.js"></script>-->
+
+
 
   </head>
   <body>
@@ -472,7 +474,7 @@
 		</tr>
 		<tr>
 			<td>33</td>
-			<td>Charizard</td>
+			<td>Charizßßßard</td>
 			<td><img class="amiiboImg" src="amiiboo-images/33_charizard.jpg"></td>
 			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
 			<td>Pokemon</td>
@@ -499,6 +501,21 @@
 	</tbody>
 
 	</table>
+	
+	<button id="submitBtn" onclick="submitClick()">Click</button>
 
+	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+	<script>
+  	// Initialize Firebase
+  	var config = {
+    	apiKey: "AIzaSyD3p9hdIYoCSi72wUMbPT-JkIzXPf6Xmrc",
+    	authDomain: "amiibodex.firebaseapp.com",
+    	databaseURL: "https://amiibodex.firebaseio.com",
+    	storageBucket: "amiibodex.appspot.com",
+    	messagingSenderId: "582801923363"
+  	};
+  	firebase.initializeApp(config);
+	</script>
+	<script type="text/javascript" src="test.js"></script>
   </body>
 </html>

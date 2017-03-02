@@ -503,6 +503,12 @@
 	</table>
 	
 	<button id="submitBtn" onclick="submitClick()">Click</button>
+	<form>
+		User ID :  <input type="text" name="name" id="nameHehe" />
+		<br>
+		Password:  <input type="text" name="pass" id="password" />
+		<input type="button" onclick="writeUserData(this.form.name.value,this.form.pass.value)"/>
+	</form>
 
 	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
 	<script>

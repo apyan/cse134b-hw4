@@ -1,8 +1,9 @@
-function writeNewUserData(userId, password) {
+function writeNewUserData(userId, password, authId) {
   window.alert(userId + " " + password);
-  firebase.database().ref().child(userId).set({
+  firebase.database().ref().child('users/' + authId).set({
     username: userId,
     password: password,
+    authenticationId: authId,
     originalList: {
       mario: false, 
       peach: false,

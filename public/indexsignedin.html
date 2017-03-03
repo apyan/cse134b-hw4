@@ -94,7 +94,7 @@
 			<td></td>
 			<td>Donkey Kong amiibo</td>
 			<td>Semi-Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" name="have" checked="checked"></td>
 		</tr>
 		<tr>
 			<td>5</td>
@@ -107,7 +107,7 @@
 			<td></td>
 			<td>Link amiibo</td>
 			<td>Uncommon</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" name="have" checked="checked"></td>
 		</tr>
 		<tr>
 			<td>6</td>
@@ -503,11 +503,13 @@
         if (user) {
             // User is signed in
 		document.getElementById("greeting-line").innerHTML = "Welcome, " + user.email;
+
         } else {
             // No user is signed in
 		document.getElementById("greeting-line").innerHTML = "FALSE";
         }
     	});
+
 
 	/*var user = firebase.auth().currentUser;
 	if(user) {

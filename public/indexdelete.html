@@ -12,7 +12,7 @@
 
   </head>
   <body>
-  	<button class="backButton_1" type="button" onclick="location.href='index.html'">Back</button>
+  	<button class="backButton_1" type="button" onclick="backPressed()">Back</button>
 	<div class="headerDiv">
 		<h1 class="titleHeader">AmiiboDex</h1><br><br>
 		<!-- <a href="test.html">Test Checklist</a> -->
@@ -247,6 +247,7 @@
 			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
 			<td>Super Mario</td>
 			<td>12/ 14/ 2014</td>
+
 			<td>2</td>
 			<td></td>
 			<td>Luigi amiibo</td>
@@ -523,5 +524,30 @@
 
 	</table>
 
+	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+	<script>
+  	// Initialize Firebase
+  	var config = {
+    	apiKey: "AIzaSyD3p9hdIYoCSi72wUMbPT-JkIzXPf6Xmrc",
+    	authDomain: "amiibodex.firebaseapp.com",
+    	databaseURL: "https://amiibodex.firebaseio.com",
+    	storageBucket: "amiibodex.appspot.com",
+    	messagingSenderId: "582801923363"
+  	};
+  	firebase.initializeApp(config);
+
+	function backPressed() {
+		firebase.auth().onAuthStateChanged(function (user) {
+        	if (user) {
+            		// User is signed in
+			//document.getElementById("greeting-line").innerHTML = "Welcome, " + user.email;
+			window.location.href='indexsignedin.html';
+        	} else {
+            		// No user is signed in
+        	}
+    		});
+	}
+	</script>
+	<script type="text/javascript" src="test.js"></script>
   </body>
 </html>

@@ -509,6 +509,16 @@
     	messagingSenderId: "582801923363"
   	};
   	firebase.initializeApp(config);
+
+	/*firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in
+		document.getElementById("greeting-line").innerHTML = "Welcome, " + user.email;
+		window.location.href='indexsignedin.html';
+        } else {
+            // No user is signed in
+        }
+    	});*/
 	</script>
 	<script type="text/javascript" src="test.js"></script>
   </body>

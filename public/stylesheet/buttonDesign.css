@@ -18,7 +18,7 @@
   text-decoration: none;
   float: right;
   display:inline;
-  width: 8%;
+  width: 100px;
 }
 
 .signButton:hover {
@@ -46,7 +46,7 @@
   font-size: 1.00em;
   padding: 8px 15px 8px 15px;
   text-decoration: none;
-  width: 8%;
+  width: 100px;
 }
 
 .backButton:hover {
@@ -74,7 +74,7 @@
   font-size: 1.00em;
   padding: 8px 15px 8px 15px;
   text-decoration: none;
-  width: 8%;
+  width: 100px;
   float: right;
   display:inline;
 }
@@ -104,7 +104,7 @@
   font-size: 1.00em;
   padding: 5px 10px 5px 10px;
   text-decoration: none;
-  width: 8%;
+  width: 100px;
 }
 
 .modButton:hover {

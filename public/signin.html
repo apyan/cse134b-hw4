@@ -32,7 +32,7 @@
 		<br>
 		<h3 class="textLine_1">- Or sign in with Google -</h3>
 		<!-- Google Sign-In -->
-		<input id="google-sign-in" class="googleButton" type="button" value=" " onclick="googleSignIn()">
+		<input id="google-sign-in" class="googleButton" type="button" value=" " onclick="google_login_in()">
 		</form>
 		<br><p id="test"></p>
 	</div>
@@ -84,9 +84,22 @@
        			window.location='indexsignedin.html';
     		}, 500);*/
 	}
-
+  function google_login_in(){
+        var provider = new firebase.auth.GoogleAuthProvider(); 
+        provider.addScope('https://www.googleapis.com/auth/plus.login');
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            var token = result.credential.accessToken;
+            var user = result.user;
+        }).catch(function(error) {
+            var errorCode     = error.code;
+            var errorMessage  = error.message;
+            var email         = error.email;
+            var credential    = error.credential;
+        });
+        window.location.href = "indexsignedin.html";
+    }
 	// Google Login Button
-	function googleSignIn() {
+	/*function googleSignIn() {
 		document.getElementById("test").innerHTML = "GOOGLE";
 		var provider = new firebase.auth.GoogleAuthProvider();
 		provider.addScope('https://www.googleapis.com/auth/plus.login');
@@ -102,7 +115,7 @@
 			console.log(error.message)
 		});
 		document.getElementById("test").innerHTML = "GOOGLE: " + user.email;
-	}
+	}*/
 
   </script>
 

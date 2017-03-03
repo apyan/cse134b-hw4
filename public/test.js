@@ -104,7 +104,6 @@ function forEachFunction(item, index) {
 characters.forEach(forEachFunction);
 
 function sortTable(n) {
-  alert("hi");
   var table, rows, switching, i, x, y, shouldSwitch, dir,var1, switchcount = 0;
   table = document.getElementById("mainTable");
   switching = true;
@@ -117,7 +116,7 @@ function sortTable(n) {
     switching = false;
     
     rows = table.getElementsByTagName("TR");
-    
+
     /*Loop through all table rows (except the
     first, which contains table headers):*/
     for (i = 1; i < (rows.length - 1); i++) {

@@ -29,6 +29,10 @@
 	    	<br><br>
 	    	<!--change to submit-->
 	    	<input id="sign-in" class="modButton" type="button" value="Sign In" onclick="signInUserData()">
+		<br>
+		<h3 class="textLine_1">- Or sign in with Google -</h3>
+		<!-- Google Sign-In -->
+		<input id="google-sign-in" class="googleButton" type="button" value=" " onclick="googleSignIn()">
 		</form>
 		<br><p id="test"></p>
 	</div>
@@ -48,41 +52,50 @@
     // Testing Sign-Up Button
     //var messagesRef = new Firebase('https://amiibodex.firebaseio.com/users');
 
-    // Sign-In Button is pressed
-    function signInUserData(){
+	// Sign-In Button is pressed
+	function signInUserData(){
 
-	// Test Statements
-	document.getElementById("test").innerHTML = "Creating user...";
+		// Test Statements
+		document.getElementById("test").innerHTML = "Creating user...";
 
-	//var username = document.querySelector('#username').value;
-	var email = document.querySelector('#email').value;
-	var password = document.querySelector('#password').value;
+		//var username = document.querySelector('#username').value;
+		var email = document.querySelector('#email').value;
+		var password = document.querySelector('#password').value;
 
-	// Test Statements
-	document.getElementById("test").innerHTML = password + " " + email;
+		// Test Statements
+		document.getElementById("test").innerHTML = password + " " + email;
 
-          /*firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          if (errorCode === 'auth/wrong-password') {
-            alert('Wrong password.');
-          } else {
-            alert(errorMessage);
-          }
-          console.log(error);*/
-	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-   		console.log(error.code);
-   		console.log(error.message);
-	});
+		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+   			console.log(error.code);
+   			console.log(error.message);
+		});
 
-    var user = firebase.auth().currentUser;
-    if(user) {
-	document.getElementById("test").innerHTML = "TRUE: " + user.email;
-    } else {
-	document.getElementById("test").innerHTML = "FALSE: " + user.email;
-    }
-    }
+		var user = firebase.auth().currentUser;
+		if(user) {
+			document.getElementById("test").innerHTML = "TRUE: " + user.email;
+		} else {
+			document.getElementById("test").innerHTML = "FALSE: " + user.email;
+		}
+	}
+
+	// Google Login Button
+	function googleSignIn() {
+		document.getElementById("test").innerHTML = "GOOGLE";
+		var provider = new firebase.auth.GoogleAuthProvider();
+		provider.addScope('https://www.googleapis.com/auth/plus.login');
+   		firebase.auth().signInWithPopup(provider).then(function(result) {
+			var token = result.credential.accessToken;
+			var user = result.user;
+			console.log(token)
+			console.log(user)
+		}).catch(function(error) {
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			console.log(error.code)
+			console.log(error.message)
+		});
+		document.getElementById("test").innerHTML = "GOOGLE: " + user.email;
+	}
 
   </script>
 

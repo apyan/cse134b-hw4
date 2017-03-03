@@ -116,3 +116,15 @@
   background-image: linear-gradient(to bottom, #9fb5c2, #70828f);
   text-decoration: none;
 }
+
+.googleButton {
+  background: url("../images/btn_google_signin_dark_normal_web.png") no-repeat scroll 0 0 transparent;
+  cursor: pointer;
+  height: 3.75em;
+  width: 14.75em;
+}
+
+.googleButton {
+  background: url("../images/btn_google_signin_dark_pressed_web.png") no-repeat scroll 0 0 transparent;
+  text-decoration: none;
+}

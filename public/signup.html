@@ -63,32 +63,11 @@
 	// Test Statements
 	document.getElementById("test").innerHTML = username + " " + password + " " + email;
 
-      //var credential = firebase.auth.EmailAuthProvider.credential(email, password);
-      //var auth = firebase.auth();
-      //var currentUser = auth.currentUser;
-	/*firebase.auth().createUserWithEmailAndPassword(email, password).then(function(username) {
-    			var username = firebase.auth().currentUser;
-    			logUser(username, email, password);
-		}, function(error) {
-    			var errorCode = error.code;
-    			var errorMessage = error.message;
-	});
-
-	function logUser(username, email, password) {
-    		var ref = firebase.database().ref("users");
-    		var obj = {
-        		"user" : username,
-			"email" : email,
-        		"password" : password
-    		};
-    		ref.push(obj);
-	}*/
-
 	// Working Email and Password sign-in (Check Authentication -> Users)
 	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
         // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        	var errorCode = error.code;
+        	var errorMessage = error.message;
         if (errorCode == 'auth/weak-password') {
           alert('The password is too weak.');
         } else {
@@ -96,6 +75,20 @@
         }
         console.log(error);
       });
+
+		var user = firebase.auth().currentUser;
+		if(user) {
+			document.getElementById("test").innerHTML = "TRUE: " + user.email;
+			//alert("Successfully signed up!");
+			//window.location.href='indexsignedin.html';
+		} else {
+			document.getElementById("test").innerHTML = "FALSE: " + user.email;
+		}
+
+	// Re-direct to Signed-In Index (0.5 seconds)
+	setTimeout(function(){
+       		window.location='index.html';
+    	}, 500);
 
 	//firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
   	// Handle Errors here.

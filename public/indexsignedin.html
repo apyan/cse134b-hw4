@@ -15,11 +15,12 @@
   	<button class="backButton_1" type="button" onclick="location.href='signout.html'">Sign Out</button><br><br>
 	<div class="headerDiv">
 		<h1 class="titleHeader">AmiiboDex</h1><br><br>
+		<br><p id="test"></p>
 		<!-- <a href="test.html">Test Checklist</a> -->
 	</div>
 
 	<div>
-		<br><br><h1 class="textLine_2">Welcome, [username]</h1>
+		<br><br><h1 class="textLine_2" id="greeting-line">Welcome, [username]</h1>
 		<a class="textLine_2" href="team.html">Team</a><br><br>
 	</div>
 
@@ -486,6 +487,28 @@
 			<td><input type="checkbox" name="have"></td>
 		</tr>
 	</table>
+  <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyD3p9hdIYoCSi72wUMbPT-JkIzXPf6Xmrc",
+      authDomain: "amiibodex.firebaseapp.com",
+      databaseURL: "https://amiibodex.firebaseio.com",
+      storageBucket: "amiibodex.appspot.com",
+      messagingSenderId: "582801923363"
+    };
+    firebase.initializeApp(config);
 
+	var user = firebase.auth().currentUser;
+	if(user) {
+		document.getElementById("test").innerHTML = "TRUE: " + user.email;
+	} else {
+		document.getElementById("test").innerHTML = "FALSE";
+	}
+	document.getElementById("greeting-line").innerHTML = "Welcome, " + user.email;
+
+  </script>
+
+  <script type="text/javascript" src="test.js"></script>
   </body>
 </html>

@@ -73,9 +73,16 @@
 		var user = firebase.auth().currentUser;
 		if(user) {
 			document.getElementById("test").innerHTML = "TRUE: " + user.email;
+			alert("Successfully signed in!");
+			window.location.href='indexsignedin.html';
 		} else {
 			document.getElementById("test").innerHTML = "FALSE: " + user.email;
 		}
+
+		// Re-direct to Signed-In Index (0.5 seconds)
+		/*setTimeout(function(){
+       			window.location='indexsignedin.html';
+    		}, 500);*/
 	}
 
 	// Google Login Button

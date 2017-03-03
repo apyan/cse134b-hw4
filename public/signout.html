@@ -21,6 +21,7 @@
 	    	<input class="modButton" type="button" value="Sign Out" onclick="signOutUserData()">
 		</form>
 		<br><p id="test"></p>
+		<br><p id="test1"></p>
 	</div>
 
   <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
@@ -42,16 +43,15 @@
     function signOutUserData(){
 
 	// Test Statements
-    var user = firebase.auth().currentUser;
-    if(user) {
-	document.getElementById("test").innerHTML = "TRUE: " + user.email;
-    } else {
-	document.getElementById("test").innerHTML = "FALSE: " + user.email;
-    }
-
-      var username = document.querySelector('#username').value;
-      var password = document.querySelector('#password').value;
-      var email = document.querySelector('#email').value;
+	firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in
+		document.getElementById("test").innerHTML = "TRUE: " + user.email;
+        } else {
+            // No user is signed in
+		document.getElementById("test").innerHTML = "FALSE";
+        }
+    	});
 
 	// Working Email and Password sign-out (Check Authentication -> Users)
 	firebase.auth().signOut().then(function() {
@@ -60,6 +60,8 @@
    		console.log(error.code);
    		console.log(error.message);
 	});
+
+	window.location.href='index.html';
 
     }
   </script>

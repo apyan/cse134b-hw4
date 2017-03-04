@@ -59,37 +59,30 @@
         var username = document.querySelector('#username').value;
         var password = document.querySelector('#password').value;
         var email = document.querySelector('#email').value;
-          alert("sanity plz");
         // Test Statements
-        document.getElementById("test").innerHTML = username + " " + password + " " + email + "sanity plz";
-        alert("sanity");
+        document.getElementById("test").innerHTML = username + " " + password + " " + email;
         // Working Email and Password sign-in (Check Authentication -> Users)
         firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-          alert("woah");
           // Handle Errors here.
           var errorCode = error.code;
           var errorMessage = error.message;
-          alert("before");
           if (errorCode == 'auth/weak-password') {
             alert('The password is too weak.');
           }
-          alert("after");
         });
-
-        alert("before user");
         firebase.auth().onAuthStateChanged(function (user) {
-        if(user) {
-            document.getElementById("test").innerHTML = "TRUE: " + user.email;
-            alert("Successfully signed up!");
-            writeNewUserData(username, password, user.uid);
-            window.location.href='indexsignedin.html';
-        } 
-        else {
-            document.getElementById("test").innerHTML = "FALSE: " + user.email;
-            alert("Unsuccessfully signed up!");
-            window.location.href='indexsignedin.html';
-        }
-      });
+          if(user) {
+              document.getElementById("test").innerHTML = "TRUE: " + user.email;
+              alert("Successfully signed up!");
+              writeNewUserData(username, password, user.uid);
+              window.location.href='indexsignedin.html';
+          } 
+          else {
+              document.getElementById("test").innerHTML = "FALSE: " + user.email;
+              alert("Unsuccessfully signed up!");
+              window.location.href='indexsignedin.html';
+          }
+        });
       }
   </script>
 

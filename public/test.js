@@ -2,7 +2,7 @@ function writeNewUserData(userId, password, authId) {
   window.alert(userId + " " + password);
   firebase.database().ref().child('users/' + authId).set({
     username: userId,
-    customList1:{
+    customList:{
       "0-Custom": {
         DateRelease : 0,
         Description : false,
@@ -32,6 +32,7 @@ function writeNewUserData(userId, password, authId) {
       Kirby: false,
       Marth: false,
       Zelda: false,
+      DiddyKong: false,
       Luigi: false,
       LittleMac: false,
       Pit: false,
@@ -44,7 +45,7 @@ function writeNewUserData(userId, password, authId) {
       Ike: false,
       Shulk: false,
       Sonic: false,
-      Megaman: false,
+      MegaMan: false,
       KingDedede: false,
       MetaKnight: false,
       Robin: false,
@@ -62,6 +63,20 @@ function writeNewUserData(userId, password, authId) {
 var firebaseAmiiboListRef = firebase.database().ref().child("original-amiibo-list");
 demoP = document.getElementById("demo");
 var characters = ["SkipThis","Mario", "Peach", "Yoshi", "DonkeyKong", "Link", "Fox", "Samus", "WiiFitTrainer", "Villager", "Pikachu", "Kirby", "Marth", "Zelda", "DiddyKong", "Luigi", "LittleMac", "Pit", "CaptainFalcon", "Rosalina&Luma", "Bowser", "Lucario", "ToonLink", "Sheik", "Ike", "Shulk", "Sonic", "MegaMan", "KingDedede", "MetaKnight", "Robin", "Lucina", "Wario", "Charizard", "Ness"];
+
+function updateOwnership(character, userId) {
+  
+  var userAmiiboRef = firebase.database().ref().child("users").child(userId).child("originalList").child(character); // user's original amiibolist ref
+  var value;
+  userAmiiboRef.on('value', function(snapshot){
+    value = snapshot.val();
+  });
+  
+  var updates = {};  
+  updates["/users/" + userId + "/originalList/" + character] = !value;
+  document.getElementById(character + "-Checked").checked = !value;
+  firebase.database().ref().update(updates); 
+}
 
 function forEachFunction(item, index) {
   // skip 0th element

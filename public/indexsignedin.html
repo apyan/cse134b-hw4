@@ -55,7 +55,7 @@
 			<td></td>
 			<td>Mario amiibo</td>
 			<td>Common</td>
-			<td><input type="checkbox" name="have" checked></td>
+			<td><input type="checkbox" id="Mario-Checked" name="have" onclick="updateOwnership('Mario',authId)"></td>
 		</tr>
 		<tr>
 			<td>2</td>
@@ -68,7 +68,7 @@
 			<td></td>
 			<td>Peach amiibo</td>
 			<td>Common</td>
-			<td><input type="checkbox" name="have" checked></td>
+			<td><input type="checkbox" id="Peach-Checked" name="have" onclick="updateOwnership('Peach',authId)"></td>
 		</tr>
 		<tr>
 			<td>3</td>
@@ -81,7 +81,7 @@
 			<td></td>
 			<td>Yoshi amiibo</td>
 			<td>Uncommon</td>
-			<td><input type="checkbox" name="have" checked></td>
+			<td><input type="checkbox" id="Yoshi-Checked" name="have" onclick="updateOwnership('Yoshi',authId)"></td>
 		</tr>
 		<tr>
 			<td>4</td>
@@ -94,7 +94,7 @@
 			<td></td>
 			<td>Donkey Kong amiibo</td>
 			<td>Semi-Rare</td>
-			<td><input type="checkbox" name="have" checked="checked"></td>
+			<td><input type="checkbox" id="DonkeyKong-Checked" name="have" onclick="updateOwnership('DonkeyKong',authId)"></td>
 		</tr>
 		<tr>
 			<td>5</td>
@@ -107,7 +107,7 @@
 			<td></td>
 			<td>Link amiibo</td>
 			<td>Uncommon</td>
-			<td><input type="checkbox" name="have" checked="checked"></td>
+			<td><input type="checkbox" id="Link-Checked" name="have" onclick="updateOwnership('Link',authId)"></td>
 		</tr>
 		<tr>
 			<td>6</td>
@@ -120,7 +120,7 @@
 			<td></td>
 			<td>Star Fox amiibo</td>
 			<td>Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Fox-Checked" name="have" onclick="updateOwnership('Fox',authId)"></td>
 		</tr>
 		<tr>
 			<td>7</td>
@@ -133,7 +133,7 @@
 			<td></td>
 			<td>Samus amiibo</td>
 			<td>Unicorn</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Samus-Checked" name="have" onclick="updateOwnership('Samus',authId)"></td>
 		</tr>
 		<tr>
 			<td>8</td>
@@ -146,7 +146,7 @@
 			<td></td>
 			<td>Wii Fit amiibo</td>
 			<td>Unicorn</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="WiiFitTrainer-Checked" name="have" onclick="updateOwnership('WiiFitTrainer',authId)"></td>
 		</tr>
 		<tr>
 			<td>9</td>
@@ -159,7 +159,7 @@
 			<td></td>
 			<td>Villager amiibo</td>
 			<td>Unicorn</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Villager-Checked" name="have" onclick="updateOwnership('Villager',authId)"></td>
 		</tr>
 		<tr>
 			<td>10</td>
@@ -172,7 +172,7 @@
 			<td></td>
 			<td>Pikachu amiibo</td>
 			<td>Common</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Pikachu-Checked" name="have" onclick="updateOwnership('Pikachu',authId)"></td>
 		</tr>
 		<tr>
 			<td>11</td>
@@ -185,7 +185,7 @@
 			<td></td>
 			<td>Kirby amiibo</td>
 			<td>Unicorn</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Kirby-Checked" name="have" onclick="updateOwnership('Kirby',authId)"></td>
 		</tr>
 		<tr>
 			<td>12</td>
@@ -198,7 +198,7 @@
 			<td></td>
 			<td>Marth amiibo</td>
 			<td>Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Marth-Checked" name="have" onclick="updateOwnership('Marth',authId)"></td>
 		</tr>
 		<tr>
 			<td>13</td>
@@ -211,7 +211,7 @@
 			<td></td>
 			<td>Zelda amiibo</td>
 			<td>Common</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Zelda-Checked" name="have" onclick="updateOwnership('Zelda',authId)"></td>
 		</tr>
 		<tr>
 			<td>14</td>
@@ -224,7 +224,7 @@
 			<td></td>
 			<td>Diddy Kong amiibo</td>
 			<td>Uncommon</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="DiddyKong-Checked" name="have" onclick="updateOwnership('DiddyKong',authId)"></td>
 		</tr>
 		<tr>
 			<td>15</td>
@@ -237,7 +237,7 @@
 			<td></td>
 			<td>Luigi amiibo</td>
 			<td>Common</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Luigi-Checked" name="have" onclick="updateOwnership('Luigi',authId)"></td>
 		</tr>
 		<tr>
 			<td>16</td>
@@ -250,7 +250,7 @@
 			<td></td>
 			<td>Little Mac amiibo</td>
 			<td>Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="LittleMac-Checked" name="have" onclick="updateOwnership('LittleMac',authId)"></td>
 		</tr>
 		<tr>
 			<td>17</td>
@@ -263,7 +263,7 @@
 			<td></td>
 			<td>Pit amiibo</td>
 			<td>Unicorn</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Pit-Checked" name="have" onclick="updateOwnership('Pit',authId)"></td>
 		</tr>
 		<tr>
 			<td>18</td>
@@ -276,7 +276,7 @@
 			<td></td>
 			<td>Captain Falcon amiibo</td>
 			<td>Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="CaptainFalcon-Checked" name="have" onclick="updateOwnership('CaptainFalcon',authId)"></td>
 		</tr>
 		<tr>
 			<td>19</td>
@@ -289,7 +289,7 @@
 			<td>Target</td>
 			<td>Rosalina & Luma amiibo</td>
 			<td>Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Rosalina&Luma-Checked" name="have" onclick="updateOwnership('Rosalina&Luma',authId)"></td>
 		</tr>
 		<tr>
 			<td>20</td>
@@ -302,7 +302,7 @@
 			<td></td>
 			<td>Bowser amiibo</td>
 			<td>Semi-Common</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Bowser-Checked" name="have" onclick="updateOwnership('Bowser',authId)"></td>
 		</tr>
 		<tr>
 			<td>21</td>
@@ -315,7 +315,7 @@
 			<td>Toys "R" Us</td>
 			<td>Lucario amiibo</td>
 			<td>Semi-Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Lucario-Checked" name="have" onclick="updateOwnership('Lucario',authId)"></td>
 		</tr>
 		<tr>
 			<td>22</td>
@@ -328,7 +328,7 @@
 			<td></td>
 			<td>Toon Link amiibo</td>
 			<td>Semi-Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="ToonLink-Checked" name="have" onclick="updateOwnership('ToonLink',authId)"></td>
 		</tr>
 		<tr>
 			<td>23</td>
@@ -341,7 +341,7 @@
 			<td></td>
 			<td>Sheik amiibo</td>
 			<td>Semi-Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Sheik-Checked" name="have" onclick="updateOwnership('Sheik',authId)"></td>
 		</tr>
 		<tr>
 			<td>24</td>
@@ -354,7 +354,7 @@
 			<td></td>
 			<td>Ike amiibo</td>
 			<td>Unicorn</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Ike-Checked" name="have" onclick="updateOwnership('Ike',authId)"></td>
 		</tr>
 		<tr>
 			<td>25</td>
@@ -367,7 +367,7 @@
 			<td>GameStop</td>
 			<td>Shulk amiibo</td>
 			<td>Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Shulk-Checked" name="have" onclick="updateOwnership('Shulk',authId)"></td>
 		</tr>
 		<tr>
 			<td>26</td>
@@ -380,7 +380,7 @@
 			<td></td>
 			<td>Sonic amiibo</td>
 			<td>Semi-Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Sonic-Checked" name="have" onclick="updateOwnership('Sonic',authId)"></td>
 		</tr>
 		<tr>
 			<td>27</td>
@@ -393,7 +393,7 @@
 			<td></td>
 			<td>Mega Man amiibo</td>
 			<td>Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="MegaMan-Checked" name="have" onclick="updateOwnership('MegaMan',authId)"></td>
 		</tr>
 		<tr>
 			<td>28</td>
@@ -406,7 +406,7 @@
 			<td></td>
 			<td>King Dedede amiibo</td>
 			<td>Unicorn</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="KingDedede-Checked" name="have" onclick="updateOwnership('KingDedede',authId)"></td>
 		</tr>
 		<tr>
 			<td>29</td>
@@ -419,7 +419,7 @@
 			<td>Best Buy</td>
 			<td>Meta Knight amiibo</td>
 			<td>Unicorn</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="MetaKnight-Checked" name="have" onclick="updateOwnership('MetaKnight',authId)"></td>
 		</tr>
 		<tr>
 			<td>30</td>
@@ -432,7 +432,7 @@
 			<td></td>
 			<td>Robin amiibo</td>
 			<td>Unicorn</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Robin-Checked" name="have" onclick="updateOwnership('Robin',authId)"></td>
 		</tr>
 		<tr>
 			<td>31</td>
@@ -445,7 +445,7 @@
 			<td></td>
 			<td>Lucina amiibo</td>
 			<td>Unicorn</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Lucina-Checked" name="have" onclick="updateOwnership('Lucina',authId)"></td>
 		</tr>
 		<tr>
 			<td>32</td>
@@ -458,7 +458,7 @@
 			<td></td>
 			<td>Wario amiibo</td>
 			<td>Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Wario-Checked" name="have" onclick="updateOwnership('Wario',authId)"></td>
 		</tr>
 		<tr>
 			<td>33</td>
@@ -471,7 +471,7 @@
 			<td></td>
 			<td>Charizard amiibo</td>
 			<td>Rare</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Charizard-Checked" name="have" onclick="updateOwnership('Charizard',authId)"></td>
 		</tr>
 		<tr>
 			<td>34</td>
@@ -484,7 +484,7 @@
 			<td>GameStop</td>
 			<td>Ness amiibo</td>
 			<td>Unicorn</td>
-			<td><input type="checkbox" name="have"></td>
+			<td><input type="checkbox" id="Ness-Checked" name="have" onclick="updateOwnership('Ness',authId)"></td>
 		</tr>
 	</table>
   <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
@@ -498,12 +498,15 @@
       messagingSenderId: "582801923363"
     };
     firebase.initializeApp(config);
+   
+    var authId;
+		// Authenticates user
+		firebase.auth().onAuthStateChanged(function (user) {
+    	if (user) {
+			// User is signed in
+				document.getElementById("greeting-line").innerHTML = "Welcome, " + user.email + "!";
+				authId = user.uid;
 
-	// Authenticates user
-	firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-		// User is signed in
-		document.getElementById("greeting-line").innerHTML = "Welcome, " + user.email + "!";
         } else {
 		// No user is signed in, redirect back to "index.html"
 		//document.getElementById("greeting-line").innerHTML = "FALSE";
@@ -511,8 +514,7 @@
         }
     	});
 
-  </script>
-
+	</script>
   <script type="text/javascript" src="test.js"></script>
   </body>
 </html>

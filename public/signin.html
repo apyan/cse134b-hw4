@@ -55,59 +55,48 @@
 	// Sign-In Button is pressed
 	function signInUserData(){
 
-		// Test Statements
-		document.getElementById("test").innerHTML = "Creating user...";
+	  // Test Statements
+	  document.getElementById("test").innerHTML = "Creating user...";
 
-		//var username = document.querySelector('#username').value;
-		var email = document.querySelector('#email').value;
-		var password = document.querySelector('#password').value;
+	  //var username = document.querySelector('#username').value;
+	  var email = document.querySelector('#email').value;
+	  var password = document.querySelector('#password').value;
 
-		// Test Statements
-		document.getElementById("test").innerHTML = password + " " + email;
+	  // Test Statements
+	  document.getElementById("test").innerHTML = password + " " + email;
 
-		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-   			console.log(error.code);
-   			console.log(error.message);
-		});
+	  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+   	    console.log(error.code);
+   		console.log(error.message);
+	  });
 
-		var user = firebase.auth().currentUser;
-		if(user) {
-			document.getElementById("test").innerHTML = "TRUE: " + user.email;
-			alert("Successfully signed in!" + user);
-			window.location.href='indexsignedin.html';
-		} else {
-			document.getElementById("test").innerHTML = "FALSE: " + user.email;
-		}
-
-		// Re-direct to Signed-In Index (0.5 seconds)
-		/*setTimeout(function(){
-       			window.location='indexsignedin.html';
-    		}, 500);*/
+	  var user = firebase.auth().currentUser;
+	  if(user) {
+		document.getElementById("test").innerHTML = "TRUE: " + user.email;
+		window.location.href='indexsignedin.html';
+	  } else {
+	    document.getElementById("test").innerHTML = "FALSE: " + user.email;
+	  }
 	}
-  function google_login_in(){
-        var provider = new firebase.auth.GoogleAuthProvider(); 
-        provider.addScope('https://www.googleapis.com/auth/plus.login');
-        firebase.auth().signInWithPopup(provider).then(function(result) {
-            var token = result.credential.accessToken;
-            var user = result.user;
-        }).catch(function(error) {
-            var errorCode     = error.code;
-            var errorMessage  = error.message;
-            var email         = error.email;
-            var credential    = error.credential;
-        });
-        //window.location.href = "indexsignedin.html";
+
+    function google_login_in(){
+      var provider = new firebase.auth.GoogleAuthProvider(); 
+      provider.addScope('https://www.googleapis.com/auth/plus.login');
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        var token = result.credential.accessToken;
+        var user = result.user;
+      }).catch(function(error) {
+        var errorCode     = error.code;
+        var errorMessage  = error.message;
+        var email         = error.email;
+        var credential    = error.credential;
+      });
     }
+
     firebase.auth().onAuthStateChanged(function (user) {
       if(user) {
-        alert("switching");
         var user = firebase.auth().currentUser;
-        alert(user.email);
-        alert(user);
         location.href = "indexsignedin.html";
-      }
-      else {
-        alert("not switching");
       }
     });
 	// Google Login Button

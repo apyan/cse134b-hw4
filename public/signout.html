@@ -42,28 +42,26 @@
     // Sign-Out Button is pressed
     function signOutUserData(){
 
-	// Test Statements
-	firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
+	  // Test Statements
+	  firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
             // User is signed in
-		document.getElementById("test").innerHTML = "TRUE: " + user.email;
-        } else {
+		    document.getElementById("test").innerHTML = "TRUE: " + user.email;
+      } else {
             // No user is signed in
-		document.getElementById("test").innerHTML = "FALSE";
-        }
-    	});
+		    document.getElementById("test").innerHTML = "FALSE";
+      }
+    });
 
-	// Working Email and Password sign-out (Check Authentication -> Users)
-	firebase.auth().signOut().then(function() {
-   		alert("Logged out!")
-	}, function(error) {
+	  // Working Email and Password sign-out (Check Authentication -> Users)
+	  firebase.auth().signOut().then(function() {
+	  }, function(error) {
    		alert(error.code);
    		alert(error.message);
-	});
+	  });
 
-	window.location.href='index.html';
-
-    }
+	  window.location.href='index.html';
+  }
   </script>
 
   <script type="text/javascript" src="test.js"></script>

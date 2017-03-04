@@ -55,10 +55,10 @@
 
 	// Working Email and Password sign-out (Check Authentication -> Users)
 	firebase.auth().signOut().then(function() {
-   		console.log("Logged out!")
+   		alert("Logged out!")
 	}, function(error) {
-   		console.log(error.code);
-   		console.log(error.message);
+   		alert(error.code);
+   		alert(error.message);
 	});
 
 	window.location.href='index.html';

@@ -96,8 +96,20 @@
             var email         = error.email;
             var credential    = error.credential;
         });
-        window.location.href = "indexsignedin.html";
+        //window.location.href = "indexsignedin.html";
     }
+    firebase.auth().onAuthStateChanged(function (user) {
+      if(user) {
+        alert("switching");
+        var user = firebase.auth().currentUser;
+        alert(user.email);
+        alert(user);
+        location.href = "indexsignedin.html";
+      }
+      else {
+        alert("not switching");
+      }
+    });
 	// Google Login Button
 	/*function googleSignIn() {
 		document.getElementById("test").innerHTML = "GOOGLE";

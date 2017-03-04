@@ -26,9 +26,10 @@
 		<br><br>
 	</div>
 
-	<button class="modButton" type="button" onclick="location.href='add.html'">Add</button>
-	<button class="modButton" type="button" onclick="location.href='indexdelete.html'">Delete</button>
-	<button class="modButton" type="button" onclick="location.href='indexedit.html'">Edit</button><br><br>
+	<button class="disabledModButton" type="button" onclick="location.href='add.html'" title="Unable to edit. Please sign in." disabled>Add</button>
+	<button class="disabledModButton" type="button" onclick="location.href='indexdelete.html'" title="Unable to edit. Please sign in." disabled>Delete</button>
+	<button class="disabledModButton" type="button" onclick="location.href='indexedit.html'" title="Unable to edit. Please sign in." disabled>Edit</button>
+	<a title="Unable to edit. Please sign in."><img src="https://shots.jotform.com/kade/Screenshots/blue_question_mark.png" height="13px"/></a><br><br>
 
 	<table id="mainTable" class="mainTable">
 		<caption class="textLine">Your Amiibos</caption>
@@ -511,6 +512,7 @@
   	};
   	firebase.initializeApp(config);
 
+  	
 	/*firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in

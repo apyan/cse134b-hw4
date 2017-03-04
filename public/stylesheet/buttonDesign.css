@@ -117,6 +117,24 @@
   text-decoration: none;
 }
 
+.disabledModButton {
+  background: #254f6b;
+  background-image: -webkit-linear-gradient(top, gray, #152833);
+  background-image: -moz-linear-gradient(top, gray, #152833);
+  background-image: -ms-linear-gradient(top, gray, #152833);
+  background-image: -o-linear-gradient(top, gray, #152833);
+  background-image: linear-gradient(to bottom, gray, #152833);
+  -webkit-border-radius: 6;
+  -moz-border-radius: 6;
+  border-radius: 6px;
+  font-family: "Coda", sans-serif;
+  color: #ffffff;
+  font-size: 1.00em;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  width: 100px;
+}
+
 .googleButton {
   background: url("../images/btn_google_signin_dark_normal_web.png") no-repeat scroll 0 0 transparent;
   cursor: pointer;

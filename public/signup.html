@@ -53,50 +53,44 @@
     // Sign-Up Button is pressed
     function signUpUserData(){
 
-	// Test Statements
-	document.getElementById("test").innerHTML = "Creating user...";
+        // Test Statements
+        document.getElementById("test").innerHTML = "Creating user...";
 
-      var username = document.querySelector('#username').value;
-      var password = document.querySelector('#password').value;
-      var email = document.querySelector('#email').value;
+        var username = document.querySelector('#username').value;
+        var password = document.querySelector('#password').value;
+        var email = document.querySelector('#email').value;
+          alert("sanity plz");
+        // Test Statements
+        document.getElementById("test").innerHTML = username + " " + password + " " + email + "sanity plz";
+        alert("sanity");
+        // Working Email and Password sign-in (Check Authentication -> Users)
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+          alert("woah");
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          alert("before");
+          if (errorCode == 'auth/weak-password') {
+            alert('The password is too weak.');
+          }
+          alert("after");
+        });
 
-	// Test Statements
-	document.getElementById("test").innerHTML = username + " " + password + " " + email;
-
-	// Working Email and Password sign-in (Check Authentication -> Users)
-	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-        // Handle Errors here.
-        	var errorCode = error.code;
-        	var errorMessage = error.message;
-        if (errorCode == 'auth/weak-password') {
-          alert('The password is too weak.');
-        } else {
-          alert(errorMessage);
+        alert("before user");
+        firebase.auth().onAuthStateChanged(function (user) {
+        if(user) {
+            document.getElementById("test").innerHTML = "TRUE: " + user.email;
+            alert("Successfully signed up!");
+            writeNewUserData(username, password, user.uid);
+            window.location.href='indexsignedin.html';
+        } 
+        else {
+            document.getElementById("test").innerHTML = "FALSE: " + user.email;
+            alert("Unsuccessfully signed up!");
+            window.location.href='indexsignedin.html';
         }
-        console.log(error);
       });
-
-		var user = firebase.auth().currentUser;
-		if(user) {
-			document.getElementById("test").innerHTML = "TRUE: " + user.email;
-			//alert("Successfully signed up!");
-			//window.location.href='indexsignedin.html';
-		} else {
-			document.getElementById("test").innerHTML = "FALSE: " + user.email;
-		}
-
-	// Re-direct to Signed-In Index (0.5 seconds)
-	setTimeout(function(){
-       		window.location='indexsignedin.html';
-    	}, 500);
-
-	//firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-  	// Handle Errors here.
-  	//var errorCode = error.code;
-  	//var errorMessage = error.message;
-  	// ...
-	//});
-    }
+      }
   </script>
 
   <script type="text/javascript" src="test.js"></script>

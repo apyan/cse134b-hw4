@@ -18,7 +18,7 @@
 	</div>
 
 	<div>
-		<br><br><h1 class="textLine_2">Welcome</h1>
+		<br><br><h1 class="textLine_2" id="greeting-line">Welcome, [username]!</h1>
 		<a class="textLine_2" href="team.html">Team</a><br><br>
 	</div>
 		<button class="modButton" type="button" onclick="location.href='indexedit.html'">Edit</button><br><br>
@@ -492,6 +492,17 @@
     	messagingSenderId: "582801923363"
   	};
   	firebase.initializeApp(config);
+
+	// Authenticate user
+	firebase.auth().onAuthStateChanged(function (user) {
+	if (user) {
+		// User is signed in
+		document.getElementById("greeting-line").innerHTML = "Welcome, " + user.email + "!";
+	} else {
+		// No user is signed in, then redirect to "index.html"
+		window.location.href='index.html';
+	}
+	});
 
 	function backPressed() {
 		firebase.auth().onAuthStateChanged(function (user) {

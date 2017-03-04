@@ -32,6 +32,16 @@
   	};
   	firebase.initializeApp(config);
 
+	// Authenticate user
+	firebase.auth().onAuthStateChanged(function (user) {
+	if (user) {
+		// User is signed in
+	} else {
+		// No user is signed in, then redirect to "index.html"
+		window.location.href='index.html';
+	}
+	});
+
 	function backPressed() {
 		firebase.auth().onAuthStateChanged(function (user) {
         	if (user) {

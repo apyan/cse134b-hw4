@@ -29,12 +29,12 @@
 	    	<br><br>
 	    	<!--change to submit-->
 	    	<input id="sign-in" class="modButton" type="button" value="Sign In" onclick="signInUserData()">
-		<br>
+		<br><p id="sign-in-status"> </p>
 		<h3 class="textLine_1">- Or sign in with Google -</h3>
 		<!-- Google Sign-In -->
 		<input id="google-sign-in" class="googleButton" type="button" value=" " onclick="google_login_in()">
 		</form>
-		<br><p id="test"></p>
+		<!-- <br><p id="test"></p> -->
 	</div>
 
   <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
@@ -55,30 +55,33 @@
 	// Sign-In Button is pressed
 	function signInUserData(){
 
-	  // Test Statements
-	  document.getElementById("test").innerHTML = "Creating user...";
+	// Test Statements
+	//document.getElementById("test").innerHTML = "Creating user...";
 
-	  //var username = document.querySelector('#username').value;
-	  var email = document.querySelector('#email').value;
-	  var password = document.querySelector('#password').value;
+	//var username = document.querySelector('#username').value;
+	var email = document.querySelector('#email').value;
+	var password = document.querySelector('#password').value;
 
-	  // Test Statements
-	  document.getElementById("test").innerHTML = password + " " + email;
+	// Test Statements
+	//document.getElementById("test").innerHTML = password + " " + email;
 
-	  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-   	    console.log(error.code);
-   		console.log(error.message);
-	  });
+	// Sign-In Authentication
+	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+		console.log(error.code);
+		console.log(error.message);
+		document.getElementById("sign-in-status").innerHTML = "Error: " + error.message;
+	});
 
-	  var user = firebase.auth().currentUser;
-	  if(user) {
-		document.getElementById("test").innerHTML = "TRUE: " + user.email;
+	// If there is a user session going on, redirect to "indexsignedin.html"
+	firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+		// User is signed in
 		window.location.href='indexsignedin.html';
-	  } else {
-	    document.getElementById("test").innerHTML = "FALSE: " + user.email;
-	  }
-	}
+        }
+    	});
+	} // signInUserData() ends
 
+	// Google Login
     function google_login_in(){
       var provider = new firebase.auth.GoogleAuthProvider(); 
       provider.addScope('https://www.googleapis.com/auth/plus.login');

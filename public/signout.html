@@ -20,8 +20,8 @@
 			<!--change to submit-->
 	    	<input class="modButton" type="button" value="Sign Out" onclick="signOutUserData()">
 		</form>
-		<br><p id="test"></p>
-		<br><p id="test1"></p>
+		<!-- <br><p id="test"></p>
+		<br><p id="test1"></p> -->
 	</div>
 
   <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
@@ -39,29 +39,29 @@
     // Testing Sign-Up Button
     //var messagesRef = new Firebase('https://amiibodex.firebaseio.com/users');
 
-    // Sign-Out Button is pressed
-    function signOutUserData(){
+	// Authenticate user
+	firebase.auth().onAuthStateChanged(function (user) {
+	if (user) {
+		// User is signed in
+		//document.getElementById("test").innerHTML = "TRUE: " + user.email;
+	} else {
+		// No user is signed in, then redirect to "index.html"
+		//document.getElementById("test").innerHTML = "FALSE";
+		window.location.href='index.html';
+	}
+	});
 
-	  // Test Statements
-	  firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-            // User is signed in
-		    document.getElementById("test").innerHTML = "TRUE: " + user.email;
-      } else {
-            // No user is signed in
-		    document.getElementById("test").innerHTML = "FALSE";
-      }
-    });
+	// Sign-Out Button is pressed
+	function signOutUserData(){
 
-	  // Working Email and Password sign-out (Check Authentication -> Users)
-	  firebase.auth().signOut().then(function() {
-	  }, function(error) {
-   		alert(error.code);
-   		alert(error.message);
-	  });
-
-	  window.location.href='index.html';
-  }
+	// Working Email and Password sign-out (Check Authentication -> Users)
+	firebase.auth().signOut().then(function() {
+	}, function(error) {
+		alert(error.code);
+		alert(error.message);
+	});
+	window.location.href='index.html';
+  	}
   </script>
 
   <script type="text/javascript" src="test.js"></script>

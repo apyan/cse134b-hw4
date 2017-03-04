@@ -20,7 +20,7 @@
 
 	<div>
 		<br><br>
-		<h1 class="textLine">Welcome, guest</h1>
+		<h1 class="textLine">Welcome guest!</h1>
 		<a class="textLine" href="team.html">Team</a><br>
 		<a class="textLine" href="http://amiibodex2.firebaseapp.com">To CSS BootStrap wireframes</a>
 		<br><br>
@@ -512,16 +512,14 @@
   	};
   	firebase.initializeApp(config);
 
-  	
-	/*firebase.auth().onAuthStateChanged(function (user) {
+  	// If there is a user session going on, redirect to "indexsignedin.html"
+	firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            // User is signed in
-		document.getElementById("greeting-line").innerHTML = "Welcome, " + user.email;
+		// User is signed in
 		window.location.href='indexsignedin.html';
-        } else {
-            // No user is signed in
         }
-    	});*/
+    	});
+
 	</script>
 	<script type="text/javascript" src="test.js"></script>
   </body>

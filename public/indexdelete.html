@@ -69,14 +69,12 @@
   	  		if(p === "0-Custom"){
   	  			continue;
   	  		}
-  	  		alert(object[p]["Name"]);
   	  		var checkbox = document.getElementById(object[p]["Name"] + "-Remove");
 
   	  		if(checkbox.checked){
-  	  			alert(object[p]["Number"] + "-" +  object[p]["Name"]);
   	  			firebaseDeleteRef = firebase.database().ref().child("users").child(authId).child("customList").child(object[p]["Number"] + "-" +  object[p]["Name"]);
-  	  			alert("hi");
   	  			firebaseDeleteRef.remove();
+  	  			location.reload();
   	  		}
   	  	}
   	}

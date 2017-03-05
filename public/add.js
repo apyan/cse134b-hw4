@@ -1,5 +1,4 @@
 function addAmiibo(userId) {
-	alert(userId);
 	var number = document.getElementById("number").value;
 	var name = document.getElementById("name").value;
 	var origin = document.getElementById("origin").value;
@@ -23,4 +22,6 @@ function addAmiibo(userId) {
        	Wave: wave,
         Have: have
 	});
+	alert("added");
+	//window.location.href = "indexsignedin.html";
 }

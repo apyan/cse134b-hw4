@@ -21,6 +21,6 @@ function addAmiibo(userId) {
        	Number: number,
        	Rarity: rarity,
        	Wave: wave,
-        Owned: have
+        Have: have
 	});
 }

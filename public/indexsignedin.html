@@ -28,21 +28,39 @@
 	<button class="modButton" type="button" onclick="location.href='indexdelete.html'">Delete</button>
 	<button class="modButton" type="button" onclick="location.href='indexedit.html'">Edit</button><br><br>
 
+	<table id=customAmiiboTable class="mainTable">
+		<caption class="textLine">Your Custom Amiibos *adding images hasn't been implemented yet*</caption>
+		<thead class="directionBar">
+			<tr class="tableHeader">
+				<th>Number</th>
+				<th>Name</th>
+				<th>Image</th>
+				<th>Game Origin</th>
+				<th>Date Release</th>
+				<th>Wave</th>
+				<th>Exclusive</th>
+				<th>Description</th>
+				<th>Rarity</th>
+				<th>Have</th>
+			</tr>
+		</thead>
+	</table>
+
 	<table class="mainTable">
-	<caption class="textLine">Your Amiibos</caption>
-	<thead class="directionBar">
-		<tr class="tableHeader">
-			<th>Number</th>
-			<th>Name</th>
-			<th>Image</th>
-			<th>Game Origin</th>
-			<th>Date Release</th>
-			<th>Wave</th>
-			<th>Exclusive</th>
-			<th>Description</th>
-			<th>Rarity</th>
-			<th>Have</th>
-		</tr>
+		<caption class="textLine">Your Amiibos</caption>
+		<thead class="directionBar">
+			<tr class="tableHeader">
+				<th>Number</th>
+				<th>Name</th>
+				<th>Image</th>
+				<th>Game Origin</th>
+				<th>Date Release</th>
+				<th>Wave</th>
+				<th>Exclusive</th>
+				<th>Description</th>
+				<th>Rarity</th>
+				<th>Have</th>
+			</tr>
 		</thead>
 		<tr>
 			<td>1</td>
@@ -499,20 +517,98 @@
     };
     firebase.initializeApp(config);
    
-    var authId;
-		// Authenticates user
-		firebase.auth().onAuthStateChanged(function (user) {
-    	if (user) {
-			// User is signed in
-				document.getElementById("greeting-line").innerHTML = "Welcome, " + user.email + "!";
-				authId = user.uid;
+    function printObject(object) {
+  	  var out = '';
+  	  for (var p in object) {
+  	  	if(p === "0-Custom"){
+  	  		continue;
+  	  	}
+  	  	var node = document.createElement("TR");
 
-        } else {
+  	  	var number = document.createElement("TD");
+  	  	var objectNumber = document.createTextNode(object[p]["Number"]);
+  	  	number.appendChild(objectNumber);
+  	  	node.appendChild(number);
+
+  	  	var name = document.createElement("TD");
+    	var objectName = document.createTextNode(object[p]["Name"]);
+    	name.appendChild(objectName);
+		node.appendChild(name);
+    	
+		var image = document.createElement("TD");
+		var objectImage = document.createElement("img");
+		objectImage.src = object[p]["Image"];
+		objectImage.class = "amiiboImg";
+		objectImage.id = "picture";
+		objectImage.style.width = "100%";
+    	image.appendChild(objectImage);
+		node.appendChild(image);
+
+		var gameOrigin = document.createElement("TD");
+    	var objectGameOrigin = document.createTextNode(object[p]["GameOrigin"]);
+    	gameOrigin.appendChild(objectGameOrigin);
+		node.appendChild(gameOrigin);
+
+    	var dateRelease = document.createElement("TD");
+    	var objectDateRelease = document.createTextNode(object[p]["DateRelease"]);
+    	dateRelease.appendChild(objectDateRelease);
+		node.appendChild(dateRelease);
+
+		var wave = document.createElement("TD");
+    	var objectWave = document.createTextNode(object[p]["Wave"]);
+    	wave.appendChild(objectWave);
+		node.appendChild(wave);
+
+		var exclusive = document.createElement("TD");
+    	var objectExclusive = document.createTextNode(object[p]["Exclusive"]);
+    	exclusive.appendChild(objectExclusive);
+		node.appendChild(exclusive);
+
+		var description = document.createElement("TD");
+    	var objectDescription = document.createTextNode(object[p]["Description"]);
+    	description.appendChild(objectDescription);
+		node.appendChild(description);
+
+		var rarity = document.createElement("TD");
+    	var objectRarity = document.createTextNode(object[p]["Rarity"]);
+    	rarity.appendChild(objectRarity);
+		node.appendChild(rarity);
+
+		var have = document.createElement("TD");
+		
+		var objectHave = document.createElement("input");
+		
+		objectHave.type = "checkbox";
+		objectHave.id = (object[p]["Name"] + "-Checked");
+		objectHave.checked = object[p]["Have"];
+    	have.appendChild(objectHave);
+		node.appendChild(have);
+
+    	document.getElementById("customAmiiboTable").appendChild(node);
+  	  }
+	}
+
+
+    var authId;
+	// Authenticates user
+	firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+		// User is signed in
+		document.getElementById("greeting-line").innerHTML = "Welcome, " + user.email + "!";
+		authId = user.uid;
+		var firebaseCustomRef = firebase.database().ref().child("users").child(authId).child("customList");
+		
+		firebaseCustomRef.once("value",function(snapshot){
+			printObject(snapshot.val());
+		});
+		
+    } else {
 		// No user is signed in, redirect back to "index.html"
 		//document.getElementById("greeting-line").innerHTML = "FALSE";
 		window.location.href='index.html';
         }
-    	});
+    });
+
 
 	</script>
   <script type="text/javascript" src="test.js"></script>

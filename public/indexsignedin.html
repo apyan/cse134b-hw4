@@ -598,7 +598,7 @@
 		authId = user.uid;
 		var firebaseCustomRef = firebase.database().ref().child("users").child(authId).child("customList");
 		
-		fastcharacters.forEach(function(item, index) {
+		characters.forEach(function(item, index) {
 			markOwnership(item, index, authId);
 		});
 

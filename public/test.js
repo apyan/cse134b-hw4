@@ -63,7 +63,7 @@ function writeNewUserData(userId, password, authId) {
 var firebaseAmiiboListRef = firebase.database().ref().child("original-amiibo-list");
 demoP = document.getElementById("demo");
 var characters = ["SkipThis","Mario", "Peach", "Yoshi", "DonkeyKong", "Link", "Fox", "Samus", "WiiFitTrainer", "Villager", "Pikachu", "Kirby", "Marth", "Zelda", "DiddyKong", "Luigi", "LittleMac", "Pit", "CaptainFalcon", "Rosalina&Luma", "Bowser", "Lucario", "ToonLink", "Sheik", "Ike", "Shulk", "Sonic", "MegaMan", "KingDedede", "MetaKnight", "Robin", "Lucina", "Wario", "Charizard", "Ness"];
-
+var fastcharacters = ["SkipThis","Mario", "Peach", "Yoshi", "DonkeyKong", "Link"];
 function updateOwnership(character, userId) {
   
   var userAmiiboRef = firebase.database().ref().child("users").child(userId).child("originalList").child(character); // user's original amiibolist ref
@@ -133,6 +133,28 @@ function forEachFunction(item, index) {
 }
 
 characters.forEach(forEachFunction);
+
+/*if(location.href === "indexsignedin.html") {
+  characters.forEach(function(item, index) {
+    markOwnership(item,index, uid);
+  });
+}*/
+
+function markOwnership(item, index, userId) {
+  //alert("userId: " + userId);
+  if(item === "SkipThis" ) {
+    return;
+  }
+  //alert(item);
+  var ownership = document.getElementById(item + "-Checked");
+  var userOwnershipRef = firebase.database().ref().child("users").child(userId).child("originalList").child(item);
+  //alert("anything");
+  userOwnershipRef.on('value', function(snapshot){
+   // alert(snapshot.val());
+    ownership.checked = snapshot.val();
+  });
+  //alert("something?");
+}
 
 function sortTable(n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir,var1, switchcount = 0;

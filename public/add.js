@@ -16,7 +16,7 @@ function addAmiibo(userId) {
 		Description: description,
 		Exclusive: exclusive,
         GameOrigin: origin,
-        Image: false,
+        Image: "https://firebasestorage.googleapis.com/v0/b/amiibodex.appspot.com/o/Original-Amiibo%2F11_kirby.jpg?alt=media&token=b1dfb09b-8185-4d9a-9d23-ab04e7e89cd4",
         Name: name,
        	Number: number,
        	Rarity: rarity,

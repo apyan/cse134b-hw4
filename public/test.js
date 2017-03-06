@@ -158,55 +158,57 @@ function forEachFunction(item, index) {
 	});
 	
 }
+
+
 fastcharacters1.forEach(forEachFunction);
-function doStuff7() {
+function waitToFinish7() {
     if(numberOfAmiibo!=30) {//we want it to match
-        setTimeout(doStuff7, 50);//wait 50 millisecnds then recheck
+        setTimeout(waitToFinish7, 50);//wait 50 millisecnds then recheck
         return;
     }
     fastcharacters7.forEach(forEachFunction);
 }
-function doStuff6() {
+function waitToFinish6() {
     if(numberOfAmiibo!=25) {//we want it to match
-        setTimeout(doStuff6, 50);//wait 50 millisecnds then recheck
+        setTimeout(waitToFinish6, 50);//wait 50 millisecnds then recheck
         return;
     }
     fastcharacters6.forEach(forEachFunction);
-    doStuff7();
+    waitToFinish7();
 }
-function doStuff5() {
+function waitToFinish5() {
     if(numberOfAmiibo!=20) {//we want it to match
-        setTimeout(doStuff5, 50);//wait 50 millisecnds then recheck
+        setTimeout(waitToFinish5, 50);//wait 50 millisecnds then recheck
         return;
     }
     fastcharacters5.forEach(forEachFunction);
-    doStuff6();
+    waitToFinish6();
 }
-function doStuff4() {
+function waitToFinish4() {
     if(numberOfAmiibo!=15) {//we want it to match
-        setTimeout(doStuff4, 50);//wait 50 millisecnds then recheck
+        setTimeout(waitToFinish4, 50);//wait 50 millisecnds then recheck
         return;
     }
     fastcharacters4.forEach(forEachFunction);
-    doStuff5();
+    waitToFinish5();
 }
-function doStuff3() {
+function waitToFinish3() {
     if(numberOfAmiibo!=10) {//we want it to match
-        setTimeout(doStuff3, 50);//wait 50 millisecnds then recheck
+        setTimeout(waitToFinish3, 50);//wait 50 millisecnds then recheck
         return;
     }
     fastcharacters3.forEach(forEachFunction);
-    doStuff4();
+    waitToFinish4();
 }
-function doStuff2() {
+function waitToFinish2() {
     if(numberOfAmiibo!=5) {//we want it to match
-        setTimeout(doStuff2, 50);//wait 50 millisecnds then recheck
+        setTimeout(waitToFinish2, 50);//wait 50 millisecnds then recheck
         return;
     }
     fastcharacters2.forEach(forEachFunction);
-    doStuff3();
+    waitToFinish3();
 }
-doStuff2();
+waitToFinish2();
 
 // Marks the Ownership
 function markOwnership(item, index, userId) {
@@ -223,34 +225,22 @@ function markOwnership(item, index, userId) {
 }
 
 // Sorting the table on page
-function sortTable(n) {
+function sortTable(n, tableId) {
 	var table, rows, switching, i, x, y, shouldSwitch, dir,var1, switchcount = 0;
-	table = document.getElementById("mainTable");
+	table = document.getElementById(tableId);
 	switching = true;
-	//Set the sorting direction to ascending:
 	dir = "asc"; 
-	/*Make a loop that will continue until
-	no switching has been done:*/
 	while (switching) {
-		// Start by saying: no switching is done:
 		switching = false;
 
 		rows = table.getElementsByTagName("TR");
 
-		/*Loop through all table rows (except the
-		first, which contains table headers):*/
 		for(i = 1; i < (rows.length - 1); i++) {
-			// Start by saying there should be no switching:
 			shouldSwitch = false;
-			/*Get the two elements you want to compare,
-			one from current row and one from the next:*/
 			x = rows[i].getElementsByTagName("P")[n];
 			y = rows[i + 1].getElementsByTagName("P")[n];
-			/*check if the two rows should switch place,
-			based on the direction, asc or desc:*/
 			if(dir == "asc") {
 				if (isNaN(x.innerHTML) && isNaN(y.innerHTML) && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-					//if so, mark as a switch and break the loop:
 					shouldSwitch= true;
 					break;
 				}
@@ -260,7 +250,6 @@ function sortTable(n) {
 				}
 			} else if(dir == "desc") {
 				if (isNaN(x.innerHTML) && isNaN(y.innerHTML) && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-				//if so, mark as a switch and break the loop:
 				shouldSwitch= true;
 				break;
 			}
@@ -271,20 +260,63 @@ function sortTable(n) {
       		}
     	}
 
-	if(shouldSwitch) {
-		/*If a switch has been marked, make the switch
-		and mark that a switch has been done:*/
-		rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-		switching = true;
-		//Each time a switch is done, increase this count by 1:
-		switchcount ++; 
-	} else {
-		/*If no switching has been done AND the direction is "asc",
-		set the direction to "desc" and run the while loop again.*/
-		if (switchcount == 0 && dir == "asc") {
-			dir = "desc";
+		if(shouldSwitch) {
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
 			switching = true;
+			switchcount ++; 
+		} else {
+			if (switchcount == 0 && dir == "asc") {
+				dir = "desc";
+				switching = true;
+			}
 		}
 	}
 }
+
+function sortCustomTable(n) {
+	var table, rows, switching, i, x, y, shouldSwitch, dir,var1, switchcount = 0;
+	table = document.getElementById("customAmiiboTable");
+	switching = true;
+	dir = "asc"; 
+	while (switching) {
+		switching = false;
+
+		rows = table.getElementsByTagName("TR");
+
+		for(i = 1; i < (rows.length - 1); i++) {
+			shouldSwitch = false;
+			x = rows[i].getElementsByTagName("TD")[n];
+			y = rows[i + 1].getElementsByTagName("TD")[n];
+			if(dir == "asc") {
+				if (isNaN(x.innerHTML) && isNaN(y.innerHTML) && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+					shouldSwitch= true;
+					break;
+				}
+				else if(!isNaN(x.innerHTML) && !isNaN(y.innerHTML) && Number(x.innerHTML) > Number(y.innerHTML)){
+					shouldSwitch= true;
+					break;
+				}
+			} else if(dir == "desc") {
+				if (isNaN(x.innerHTML) && isNaN(y.innerHTML) && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+				shouldSwitch= true;
+				break;
+			}
+			else if(!isNaN(x.innerHTML) && !isNaN(y.innerHTML) && Number(x.innerHTML) < Number(y.innerHTML)){
+				shouldSwitch= true;
+				break;
+        		}
+      		}
+    	}
+
+		if(shouldSwitch) {
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			switching = true;
+			switchcount ++; 
+		} else {
+			if (switchcount == 0 && dir == "asc") {
+				dir = "desc";
+				switching = true;
+			}
+		}
+	}
 }

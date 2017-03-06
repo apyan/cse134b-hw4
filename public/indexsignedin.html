@@ -32,478 +32,481 @@
 		<caption class="textLine">Your Custom Amiibos *adding images hasn't been implemented yet*</caption>
 		<thead class="directionBar">
 			<tr class="tableHeader">
-				<th>Number</th>
-				<th>Name</th>
+				<th onclick="sortCustomTable(0)">Number</th>
+				<th onclick="sortCustomTable(1)">Name</th>
 				<th>Image</th>
-				<th>Game Origin</th>
-				<th>Date Release</th>
-				<th>Wave</th>
-				<th>Exclusive</th>
-				<th>Description</th>
-				<th>Rarity</th>
-				<th>Have</th>
+				<th onclick="sortCustomTable(3)">Game Origin</th>
+				<th onclick="sortCustomTable(4)">Date Release</th>
+				<th onclick="sortCustomTable(5)">Wave</th>
+				<th onclick="sortCustomTable(6)">Exclusive</th>
+				<th onclick="sortCustomTable(7)">Description</th>
+				<th onclick="sortCustomTable(8)">Rarity</th>
+				<th onclick="sortCustomTable(9)">Have</th>
 			</tr>
 		</thead>
 	</table>
 
-	<table class="mainTable">
+
+	<table id="mainTable" class="mainTable">
 		<caption class="textLine">Your Amiibos</caption>
 		<thead class="directionBar">
 			<tr class="tableHeader">
-				<th>Number</th>
-				<th>Name</th>
+				<th onclick="sortTable(0,'mainTable')">Number</th>
+				<th onclick="sortTable(1,'mainTable')">Name</th>
 				<th>Image</th>
-				<th>Game Origin</th>
-				<th>Date Release</th>
-				<th>Wave</th>
+				<th onclick="sortTable(2,'mainTable')">Game Origin</th>
+				<th onclick="sortTable(3,'mainTable')">Date Release</th>
+				<th onclick="sortTable(4,'mainTable')">Wave</th>
 				<th>Exclusive</th>
-				<th>Description</th>
-				<th>Rarity</th>
+				<th onclick="sortTable(6,'mainTable')">Description</th>
+				<th onclick="sortTable(7,'mainTable')">Rarity</th>
 				<th>Have</th>
 			</tr>
 		</thead>
-		<tr>
-			<td>1</td>
-			<td>Mario</td>
-			<td><img class="amiiboImg" src="amiiboo-images/01_mario.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Super Mario</td>
-			<td>11/ 21/ 2014</td>
-			<td>1</td>
-			<td></td>
-			<td>Mario amiibo</td>
-			<td>Common</td>
-			<td><input type="checkbox" id="Mario-Checked" name="have" onclick="updateOwnership('Mario',authId)"></td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Peach</td>
-			<td><img class="amiiboImg" src="amiiboo-images/02_peach.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Super Mario</td>
-			<td>11/ 21/ 2014</td>
-			<td>1</td>
-			<td></td>
-			<td>Peach amiibo</td>
-			<td>Common</td>
-			<td><input type="checkbox" id="Peach-Checked" name="have" onclick="updateOwnership('Peach',authId)"></td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>Yoshi</td>
-			<td><img class="amiiboImg" src="amiiboo-images/03_yoshi.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Yoshi</td>
-			<td>11/ 21/ 2014</td>
-			<td>1</td>
-			<td></td>
-			<td>Yoshi amiibo</td>
-			<td>Uncommon</td>
-			<td><input type="checkbox" id="Yoshi-Checked" name="have" onclick="updateOwnership('Yoshi',authId)"></td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>Donkey Kong</td>
-			<td><img class="amiiboImg" src="amiiboo-images/04_donkey_kong.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Donkey Kong</td>
-			<td>11/ 21/ 2014</td>
-			<td>1</td>
-			<td></td>
-			<td>Donkey Kong amiibo</td>
-			<td>Semi-Rare</td>
-			<td><input type="checkbox" id="DonkeyKong-Checked" name="have" onclick="updateOwnership('DonkeyKong',authId)"></td>
-		</tr>
-		<tr>
-			<td>5</td>
-			<td>Link</td>
-			<td><img class="amiiboImg" src="amiiboo-images/05_link.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>The Legend of Zelda</td>
-			<td>11/ 21/ 2014</td>
-			<td>1</td>
-			<td></td>
-			<td>Link amiibo</td>
-			<td>Uncommon</td>
-			<td><input type="checkbox" id="Link-Checked" name="have" onclick="updateOwnership('Link',authId)"></td>
-		</tr>
-		<tr>
-			<td>6</td>
-			<td>Fox</td>
-			<td><img class="amiiboImg" src="amiiboo-images/06_fox.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Star Fox</td>
-			<td>11/ 21/ 2014</td>
-			<td>1</td>
-			<td></td>
-			<td>Star Fox amiibo</td>
-			<td>Rare</td>
-			<td><input type="checkbox" id="Fox-Checked" name="have" onclick="updateOwnership('Fox',authId)"></td>
-		</tr>
-		<tr>
-			<td>7</td>
-			<td>Samus</td>
-			<td><img class="amiiboImg" src="amiiboo-images/07_samus.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Metroid</td>
-			<td>11/ 21/ 2014</td>
-			<td>1</td>
-			<td></td>
-			<td>Samus amiibo</td>
-			<td>Unicorn</td>
-			<td><input type="checkbox" id="Samus-Checked" name="have" onclick="updateOwnership('Samus',authId)"></td>
-		</tr>
-		<tr>
-			<td>8</td>
-			<td>Wii Fit Trainer</td>
-			<td><img class="amiiboImg" src="amiiboo-images/08_wii_fit_trainer.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Wii Fit</td>
-			<td>11/ 21/ 2014</td>
-			<td>1</td>
-			<td></td>
-			<td>Wii Fit amiibo</td>
-			<td>Unicorn</td>
-			<td><input type="checkbox" id="WiiFitTrainer-Checked" name="have" onclick="updateOwnership('WiiFitTrainer',authId)"></td>
-		</tr>
-		<tr>
-			<td>9</td>
-			<td>Villager</td>
-			<td><img class="amiiboImg" src="amiiboo-images/09_villager.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Animal Crossing</td>
-			<td>11/ 21/ 2014</td>
-			<td>1</td>
-			<td></td>
-			<td>Villager amiibo</td>
-			<td>Unicorn</td>
-			<td><input type="checkbox" id="Villager-Checked" name="have" onclick="updateOwnership('Villager',authId)"></td>
-		</tr>
-		<tr>
-			<td>10</td>
-			<td>Pikachu</td>
-			<td><img class="amiiboImg" src="amiiboo-images/10_pikachu.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Pokemon</td>
-			<td>11/ 21/ 2014</td>
-			<td>1</td>
-			<td></td>
-			<td>Pikachu amiibo</td>
-			<td>Common</td>
-			<td><input type="checkbox" id="Pikachu-Checked" name="have" onclick="updateOwnership('Pikachu',authId)"></td>
-		</tr>
-		<tr>
-			<td>11</td>
-			<td>Kirby</td>
-			<td><img class="amiiboImg" src="amiiboo-images/11_kirby.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Kirby</td>
-			<td>11/ 21/ 2014</td>
-			<td>1</td>
-			<td></td>
-			<td>Kirby amiibo</td>
-			<td>Unicorn</td>
-			<td><input type="checkbox" id="Kirby-Checked" name="have" onclick="updateOwnership('Kirby',authId)"></td>
-		</tr>
-		<tr>
-			<td>12</td>
-			<td>Marth</td>
-			<td><img class="amiiboImg" src="amiiboo-images/12_marth.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Fire Emblem</td>
-			<td>11/ 21/ 2014</td>
-			<td>1</td>
-			<td></td>
-			<td>Marth amiibo</td>
-			<td>Rare</td>
-			<td><input type="checkbox" id="Marth-Checked" name="have" onclick="updateOwnership('Marth',authId)"></td>
-		</tr>
-		<tr>
-			<td>13</td>
-			<td>Zelda</td>
-			<td><img class="amiiboImg" src="amiiboo-images/13_zelda.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>The Legend of Zelda</td>
-			<td>12/ 14/ 2014</td>
-			<td>2</td>
-			<td></td>
-			<td>Zelda amiibo</td>
-			<td>Common</td>
-			<td><input type="checkbox" id="Zelda-Checked" name="have" onclick="updateOwnership('Zelda',authId)"></td>
-		</tr>
-		<tr>
-			<td>14</td>
-			<td>Diddy Kong</td>
-			<td><img class="amiiboImg" src="amiiboo-images/14_diddy_kong.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Donkey Kong</td>
-			<td>12/ 14/ 2014</td>
-			<td>2</td>
-			<td></td>
-			<td>Diddy Kong amiibo</td>
-			<td>Uncommon</td>
-			<td><input type="checkbox" id="DiddyKong-Checked" name="have" onclick="updateOwnership('DiddyKong',authId)"></td>
-		</tr>
-		<tr>
-			<td>15</td>
-			<td>Luigi</td>
-			<td><img class="amiiboImg" src="amiiboo-images/15_luigi.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Super Mario</td>
-			<td>12/ 14/ 2014</td>
-			<td>2</td>
-			<td></td>
-			<td>Luigi amiibo</td>
-			<td>Common</td>
-			<td><input type="checkbox" id="Luigi-Checked" name="have" onclick="updateOwnership('Luigi',authId)"></td>
-		</tr>
-		<tr>
-			<td>16</td>
-			<td>Little Mac</td>
-			<td><img class="amiiboImg" src="amiiboo-images/16_little_mac.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Punch-Out!!</td>
-			<td>12/ 14/ 2014</td>
-			<td>2</td>
-			<td></td>
-			<td>Little Mac amiibo</td>
-			<td>Rare</td>
-			<td><input type="checkbox" id="LittleMac-Checked" name="have" onclick="updateOwnership('LittleMac',authId)"></td>
-		</tr>
-		<tr>
-			<td>17</td>
-			<td>Pit</td>
-			<td><img class="amiiboImg" src="amiiboo-images/17_pit.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Kid Icarus</td>
-			<td>12/ 14/ 2014</td>
-			<td>2</td>
-			<td></td>
-			<td>Pit amiibo</td>
-			<td>Unicorn</td>
-			<td><input type="checkbox" id="Pit-Checked" name="have" onclick="updateOwnership('Pit',authId)"></td>
-		</tr>
-		<tr>
-			<td>18</td>
-			<td>Captain Falcon</td>
-			<td><img class="amiiboImg" src="amiiboo-images/18_captain_falcon.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>F-Zero</td>
-			<td>12/ 14/ 2014</td>
-			<td>2</td>
-			<td></td>
-			<td>Captain Falcon amiibo</td>
-			<td>Rare</td>
-			<td><input type="checkbox" id="CaptainFalcon-Checked" name="have" onclick="updateOwnership('CaptainFalcon',authId)"></td>
-		</tr>
-		<tr>
-			<td>19</td>
-			<td>Rosalina & Luma</td>
-			<td><img class="amiiboImg" src="amiiboo-images/19_rosalina_luma.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Super Mario</td>
-			<td>02/ 01/ 2015</td>
-			<td>3</td>
-			<td>Target</td>
-			<td>Rosalina & Luma amiibo</td>
-			<td>Rare</td>
-			<td><input type="checkbox" id="Rosalina&Luma-Checked" name="have" onclick="updateOwnership('Rosalina&Luma',authId)"></td>
-		</tr>
-		<tr>
-			<td>20</td>
-			<td>Bowser</td>
-			<td><img class="amiiboImg" src="amiiboo-images/20_bowser.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Super Mario</td>
-			<td>02/ 01/ 2015</td>
-			<td>3</td>
-			<td></td>
-			<td>Bowser amiibo</td>
-			<td>Semi-Common</td>
-			<td><input type="checkbox" id="Bowser-Checked" name="have" onclick="updateOwnership('Bowser',authId)"></td>
-		</tr>
-		<tr>
-			<td>21</td>
-			<td>Lucario</td>
-			<td><img class="amiiboImg" src="amiiboo-images/21_lucario.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Pokemon</td>
-			<td>02/ 01/ 2015</td>
-			<td>3</td>
-			<td>Toys "R" Us</td>
-			<td>Lucario amiibo</td>
-			<td>Semi-Rare</td>
-			<td><input type="checkbox" id="Lucario-Checked" name="have" onclick="updateOwnership('Lucario',authId)"></td>
-		</tr>
-		<tr>
-			<td>22</td>
-			<td>Toon Link</td>
-			<td><img class="amiiboImg" src="amiiboo-images/22_toon_link.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>The Legend of Zelda</td>
-			<td>02/ 01/ 2015</td>
-			<td>3</td>
-			<td></td>
-			<td>Toon Link amiibo</td>
-			<td>Semi-Rare</td>
-			<td><input type="checkbox" id="ToonLink-Checked" name="have" onclick="updateOwnership('ToonLink',authId)"></td>
-		</tr>
-		<tr>
-			<td>23</td>
-			<td>Sheik</td>
-			<td><img class="amiiboImg" src="amiiboo-images/23_sheik.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>The Legend of Zelda</td>
-			<td>02/ 01/ 2015</td>
-			<td>3</td>
-			<td></td>
-			<td>Sheik amiibo</td>
-			<td>Semi-Rare</td>
-			<td><input type="checkbox" id="Sheik-Checked" name="have" onclick="updateOwnership('Sheik',authId)"></td>
-		</tr>
-		<tr>
-			<td>24</td>
-			<td>Ike</td>
-			<td><img class="amiiboImg" src="amiiboo-images/24_ike.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Fire Emblem</td>
-			<td>02/ 01/ 2015</td>
-			<td>3</td>
-			<td></td>
-			<td>Ike amiibo</td>
-			<td>Unicorn</td>
-			<td><input type="checkbox" id="Ike-Checked" name="have" onclick="updateOwnership('Ike',authId)"></td>
-		</tr>
-		<tr>
-			<td>25</td>
-			<td>Shulk</td>
-			<td><img class="amiiboImg" src="amiiboo-images/25_shulk.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Xenoblade Chronicles</td>
-			<td>02/ 01/ 2015</td>
-			<td>3</td>
-			<td>GameStop</td>
-			<td>Shulk amiibo</td>
-			<td>Rare</td>
-			<td><input type="checkbox" id="Shulk-Checked" name="have" onclick="updateOwnership('Shulk',authId)"></td>
-		</tr>
-		<tr>
-			<td>26</td>
-			<td>Sonic</td>
-			<td><img class="amiiboImg" src="amiiboo-images/26_sonic.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Sonic</td>
-			<td>02/ 01/ 2015</td>
-			<td>3</td>
-			<td></td>
-			<td>Sonic amiibo</td>
-			<td>Semi-Rare</td>
-			<td><input type="checkbox" id="Sonic-Checked" name="have" onclick="updateOwnership('Sonic',authId)"></td>
-		</tr>
-		<tr>
-			<td>27</td>
-			<td>Mega Man</td>
-			<td><img class="amiiboImg" src="amiiboo-images/27_mega_man.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Mega Man</td>
-			<td>02/ 01/ 2015</td>
-			<td>3</td>
-			<td></td>
-			<td>Mega Man amiibo</td>
-			<td>Rare</td>
-			<td><input type="checkbox" id="MegaMan-Checked" name="have" onclick="updateOwnership('MegaMan',authId)"></td>
-		</tr>
-		<tr>
-			<td>28</td>
-			<td>King Dedede</td>
-			<td><img class="amiiboImg" src="amiiboo-images/28_king_dedede.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Kirby</td>
-			<td>02/ 01/ 2015</td>
-			<td>3</td>
-			<td></td>
-			<td>King Dedede amiibo</td>
-			<td>Unicorn</td>
-			<td><input type="checkbox" id="KingDedede-Checked" name="have" onclick="updateOwnership('KingDedede',authId)"></td>
-		</tr>
-		<tr>
-			<td>29</td>
-			<td>Meta Knight</td>
-			<td><img class="amiiboImg" src="amiiboo-images/29_meta_knight.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Kirby</td>
-			<td>02/ 01/ 2015</td>
-			<td>3</td>
-			<td>Best Buy</td>
-			<td>Meta Knight amiibo</td>
-			<td>Unicorn</td>
-			<td><input type="checkbox" id="MetaKnight-Checked" name="have" onclick="updateOwnership('MetaKnight',authId)"></td>
-		</tr>
-		<tr>
-			<td>30</td>
-			<td>Robin</td>
-			<td><img class="amiiboImg" src="amiiboo-images/30_robin.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Fire Emblem</td>
-			<td>05/ 29/ 2015</td>
-			<td>4</td>
-			<td></td>
-			<td>Robin amiibo</td>
-			<td>Unicorn</td>
-			<td><input type="checkbox" id="Robin-Checked" name="have" onclick="updateOwnership('Robin',authId)"></td>
-		</tr>
-		<tr>
-			<td>31</td>
-			<td>Lucina</td>
-			<td><img class="amiiboImg" src="amiiboo-images/31_lucina.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Fire Emblem</td>
-			<td>05/ 29/ 2015</td>
-			<td>4</td>
-			<td></td>
-			<td>Lucina amiibo</td>
-			<td>Unicorn</td>
-			<td><input type="checkbox" id="Lucina-Checked" name="have" onclick="updateOwnership('Lucina',authId)"></td>
-		</tr>
-		<tr>
-			<td>32</td>
-			<td>Wario</td>
-			<td><img class="amiiboImg" src="amiiboo-images/32_wario.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Wario</td>
-			<td>05/ 29/ 2015</td>
-			<td>4</td>
-			<td></td>
-			<td>Wario amiibo</td>
-			<td>Rare</td>
-			<td><input type="checkbox" id="Wario-Checked" name="have" onclick="updateOwnership('Wario',authId)"></td>
-		</tr>
-		<tr>
-			<td>33</td>
-			<td>Charizard</td>
-			<td><img class="amiiboImg" src="amiiboo-images/33_charizard.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>Pokemon</td>
-			<td>05/ 29/ 2015</td>
-			<td>4</td>
-			<td></td>
-			<td>Charizard amiibo</td>
-			<td>Rare</td>
-			<td><input type="checkbox" id="Charizard-Checked" name="have" onclick="updateOwnership('Charizard',authId)"></td>
-		</tr>
-		<tr>
-			<td>34</td>
-			<td>Ness</td>
-			<td><img class="amiiboImg" src="amiiboo-images/34_ness.jpg"></td>
-			<!--<td><img src="https://images-na.ssl-images-amazon.com/images/I/61aYlctXc8L._AC_SX430_.jpg"></td>-->
-			<td>EarthBound</td>
-			<td>05/ 29/ 2015</td>
-			<td>4</td>
-			<td>GameStop</td>
-			<td>Ness amiibo</td>
-			<td>Unicorn</td>
-			<td><input type="checkbox" id="Ness-Checked" name="have" onclick="updateOwnership('Ness',authId)"></td>
-		</tr>
+		<tbody>
+			<tr>
+				<td><p id="Mario-Number"></p></td>
+				<td><p id="Mario-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Mario-Image" class="amiiboImg"></td>
+				<td><p id="Mario-GameOrigin"></p></td>
+				<td><p id="Mario-DateRelease"></p></td>
+				<td><p id="Mario-Wave"></p></td>
+				<td><p id="Mario-Exclusive"></p></td>
+				<td><p id="Mario-Description"></p></td>
+				<td><p id="Mario-Rarity"></p></td>
+				<td><input id="Mario-Checked" type="checkbox" name="have" onclick="updateOwnership('Mario',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Peach-Number"></p></td>
+				<td><p id="Peach-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Peach-Image" class="amiiboImg"></td>
+				<td><p id="Peach-GameOrigin"></p></td>
+				<td><p id="Peach-DateRelease"></p></td>
+				<td><p id="Peach-Wave"></p></td>
+				<td><p id="Peach-Exclusive"></p></td>
+				<td><p id="Peach-Description"></p></td>
+				<td><p id="Peach-Rarity"></p></td>
+				<td><input id="Peach-Checked" type="checkbox" name="have" onclick="updateOwnership('Peach',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Yoshi-Number"></p></td>
+				<td><p id="Yoshi-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Yoshi-Image" class="amiiboImg"></td>
+				<td><p id="Yoshi-GameOrigin"></p></td>
+				<td><p id="Yoshi-DateRelease"></p></td>
+				<td><p id="Yoshi-Wave"></p></td>
+				<td><p id="Yoshi-Exclusive"></p></td>
+				<td><p id="Yoshi-Description"></p></td>
+				<td><p id="Yoshi-Rarity"></p></td>
+				<td><input id="Yoshi-Checked" type="checkbox" name="have" onclick="updateOwnership('Yoshi',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="DonkeyKong-Number"></p></td>
+				<td><p id="DonkeyKong-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="DonkeyKong-Image" class="amiiboImg"></td>
+				<td><p id="DonkeyKong-GameOrigin"></p></td>
+				<td><p id="DonkeyKong-DateRelease"></p></td>
+				<td><p id="DonkeyKong-Wave"></p></td>
+				<td><p id="DonkeyKong-Exclusive"></p></td>
+				<td><p id="DonkeyKong-Description"></p></td>
+				<td><p id="DonkeyKong-Rarity"></p></td>
+				<td><input id="DonkeyKong-Checked" type="checkbox" name="have" onclick="updateOwnership('DonkeyKong',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Link-Number"></p></td>
+				<td><p id="Link-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Link-Image" class="amiiboImg"></td>
+				<td><p id="Link-GameOrigin"></p></td>
+				<td><p id="Link-DateRelease"></p></td>
+				<td><p id="Link-Wave"></p></td>
+				<td><p id="Link-Exclusive"></p></td>
+				<td><p id="Link-Description"></p></td>
+				<td><p id="Link-Rarity"></p></td>
+				<td><input id="Link-Checked" type="checkbox" name="have" onclick="updateOwnership('Link',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Fox-Number"></p></td>
+				<td><p id="Fox-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Fox-Image" class="amiiboImg"></td>
+				<td><p id="Fox-GameOrigin"></p></td>
+				<td><p id="Fox-DateRelease"></p></td>
+				<td><p id="Fox-Wave"></p></td>
+				<td><p id="Fox-Exclusive"></p></td>
+				<td><p id="Fox-Description"></p></td>
+				<td><p id="Fox-Rarity"></p></td>
+				<td><input id="Fox-Checked" type="checkbox" name="have" onclick="updateOwnership('Fox',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Samus-Number"></p></td>
+				<td><p id="Samus-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Samus-Image" class="amiiboImg"></td>
+				<td><p id="Samus-GameOrigin"></p></td>
+				<td><p id="Samus-DateRelease"></p></td>
+				<td><p id="Samus-Wave"></p></td>
+				<td><p id="Samus-Exclusive"></p></td>
+				<td><p id="Samus-Description"></p></td>
+				<td><p id="Samus-Rarity"></p></td>
+				<td><input id="Samus-Checked" type="checkbox" name="have" onclick="updateOwnership('Samus',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="WiiFitTrainer-Number"></p></td>
+				<td><p id="WiiFitTrainer-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="WiiFitTrainer-Image" class="amiiboImg"></td>
+				<td><p id="WiiFitTrainer-GameOrigin"></p></td>
+				<td><p id="WiiFitTrainer-DateRelease"></p></td>
+				<td><p id="WiiFitTrainer-Wave"></p></td>
+				<td><p id="WiiFitTrainer-Exclusive"></p></td>
+				<td><p id="WiiFitTrainer-Description"></p></td>
+				<td><p id="WiiFitTrainer-Rarity"></p></td>
+				<td><input id="WiiFitTrainer-Checked" type="checkbox" name="have" onclick="updateOwnership('WiiFitTrainer',authId)"></td>		
+			</tr>
+			<tr>
+				<td><p id="Villager-Number"></p></td>
+				<td><p id="Villager-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Villager-Image" class="amiiboImg"></td>
+				<td><p id="Villager-GameOrigin"></p></td>
+				<td><p id="Villager-DateRelease"></p></td>
+				<td><p id="Villager-Wave"></p></td>
+				<td><p id="Villager-Exclusive"></p></td>
+				<td><p id="Villager-Description"></p></td>
+				<td><p id="Villager-Rarity"></p></td>
+				<td><input id="Villager-Checked" type="checkbox" name="have" onclick="updateOwnership('Villager',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Pikachu-Number"></p></td>
+				<td><p id="Pikachu-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Pikachu-Image" class="amiiboImg"></td>
+				<td><p id="Pikachu-GameOrigin"></p></td>
+				<td><p id="Pikachu-DateRelease"></p></td>
+				<td><p id="Pikachu-Wave"></p></td>
+				<td><p id="Pikachu-Exclusive"></p></td>
+				<td><p id="Pikachu-Description"></p></td>
+				<td><p id="Pikachu-Rarity"></p></td>
+				<td><input id="Pikachu-Checked" type="checkbox" name="have" onclick="updateOwnership('Pikachu',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Kirby-Number"></p></td>
+				<td><p id="Kirby-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Kirby-Image" class="amiiboImg"></td>
+				<td><p id="Kirby-GameOrigin"></p></td>
+				<td><p id="Kirby-DateRelease"></p></td>
+				<td><p id="Kirby-Wave"></p></td>
+				<td><p id="Kirby-Exclusive"></p></td>
+				<td><p id="Kirby-Description"></p></td>
+				<td><p id="Kirby-Rarity"></p></td>
+				<td><input id="Kirby-Checked" type="checkbox" name="have" onclick="updateOwnership('Kirby',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Marth-Number"></p></td>
+				<td><p id="Marth-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Marth-Image" class="amiiboImg"></td>
+				<td><p id="Marth-GameOrigin"></p></td>
+				<td><p id="Marth-DateRelease"></p></td>
+				<td><p id="Marth-Wave"></p></td>
+				<td><p id="Marth-Exclusive"></p></td>
+				<td><p id="Marth-Description"></p></td>
+				<td><p id="Marth-Rarity"></p></td>
+				<td><input id="Marth-Checked" type="checkbox" name="have" onclick="updateOwnership('Marth',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Zelda-Number"></p></td>
+				<td><p id="Zelda-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Zelda-Image" class="amiiboImg"></td>
+				<td><p id="Zelda-GameOrigin"></p></td>
+				<td><p id="Zelda-DateRelease"></p></td>
+				<td><p id="Zelda-Wave"></p></td>
+				<td><p id="Zelda-Exclusive"></p></td>
+				<td><p id="Zelda-Description"></p></td>
+				<td><p id="Zelda-Rarity"></p></td>
+				<td><input id="Zelda-Checked" type="checkbox" name="have" onclick="updateOwnership('Zelda',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="DiddyKong-Number"></p></td>
+				<td><p id="DiddyKong-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="DiddyKong-Image" class="amiiboImg"></td>
+				<td><p id="DiddyKong-GameOrigin"></p></td>
+				<td><p id="DiddyKong-DateRelease"></p></td>
+				<td><p id="DiddyKong-Wave"></p></td>
+				<td><p id="DiddyKong-Exclusive"></p></td>
+				<td><p id="DiddyKong-Description"></p></td>
+				<td><p id="DiddyKong-Rarity"></p></td>
+				<td><input id="DiddyKong-Checked" type="checkbox" name="have" onclick="updateOwnership('DiddyKong',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Luigi-Number"></p></td>
+				<td><p id="Luigi-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Luigi-Image" class="amiiboImg"></td>
+				<td><p id="Luigi-GameOrigin"></p></td>
+				<td><p id="Luigi-DateRelease"></p></td>
+				<td><p id="Luigi-Wave"></p></td>
+				<td><p id="Luigi-Exclusive"></p></td>
+				<td><p id="Luigi-Description"></p></td>
+				<td><p id="Luigi-Rarity"></p></td>
+				<td><input id="Luigi-Checked" type="checkbox" name="have" onclick="updateOwnership('Luigi',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="LittleMac-Number"></p></td>
+				<td><p id="LittleMac-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="LittleMac-Image" class="amiiboImg"></td>
+				<td><p id="LittleMac-GameOrigin"></p></td>
+				<td><p id="LittleMac-DateRelease"></p></td>
+				<td><p id="LittleMac-Wave"></p></td>
+				<td><p id="LittleMac-Exclusive"></p></td>
+				<td><p id="LittleMac-Description"></p></td>
+				<td><p id="LittleMac-Rarity"></p></td>
+				<td><input id="LittleMac-Checked" type="checkbox" name="have" onclick="updateOwnership('LittleMac',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Pit-Number"></p></td>
+				<td><p id="Pit-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Pit-Image" class="amiiboImg"></td>
+				<td><p id="Pit-GameOrigin"></p></td>
+				<td><p id="Pit-DateRelease"></p></td>
+				<td><p id="Pit-Wave"></p></td>
+				<td><p id="Pit-Exclusive"></p></td>
+				<td><p id="Pit-Description"></p></td>
+				<td><p id="Pit-Rarity"></p></td>
+				<td><input id="Pit-Checked" type="checkbox" name="have" onclick="updateOwnership('Pit',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="CaptainFalcon-Number"></p></td>
+				<td><p id="CaptainFalcon-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="CaptainFalcon-Image" class="amiiboImg"></td>
+				<td><p id="CaptainFalcon-GameOrigin"></p></td>
+				<td><p id="CaptainFalcon-DateRelease"></p></td>
+				<td><p id="CaptainFalcon-Wave"></p></td>
+				<td><p id="CaptainFalcon-Exclusive"></p></td>
+				<td><p id="CaptainFalcon-Description"></p></td>
+				<td><p id="CaptainFalcon-Rarity"></p></td>
+				<td><input id="CaptainFalcon-Checked" type="checkbox" name="have" onclick="updateOwnership('CaptainFalcon',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Rosalina&Luma-Number"></p></td>
+				<td><p id="Rosalina&Luma-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Rosalina&Luma-Image" class="amiiboImg"></td>
+				<td><p id="Rosalina&Luma-GameOrigin"></p></td>
+				<td><p id="Rosalina&Luma-DateRelease"></p></td>
+				<td><p id="Rosalina&Luma-Wave"></p></td>
+				<td><p id="Rosalina&Luma-Exclusive"></p></td>
+				<td><p id="Rosalina&Luma-Description"></p></td>
+				<td><p id="Rosalina&Luma-Rarity"></p></td>
+				<td><input id="Rosalina&Luma-Checked" type="checkbox" name="have" onclick="updateOwnership('Rosalina&Luma',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Bowser-Number"></p></td>
+				<td><p id="Bowser-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Bowser-Image" class="amiiboImg"></td>
+				<td><p id="Bowser-GameOrigin"></p></td>
+				<td><p id="Bowser-DateRelease"></p></td>
+				<td><p id="Bowser-Wave"></p></td>
+				<td><p id="Bowser-Exclusive"></p></td>
+				<td><p id="Bowser-Description"></p></td>
+				<td><p id="Bowser-Rarity"></p></td>
+				<td><input id="Bowser-Checked" type="checkbox" name="have" onclick="updateOwnership('Bowser',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Lucario-Number"></p></td>
+				<td><p id="Lucario-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Lucario-Image" class="amiiboImg"></td>
+				<td><p id="Lucario-GameOrigin"></p></td>
+				<td><p id="Lucario-DateRelease"></p></td>
+				<td><p id="Lucario-Wave"></p></td>
+				<td><p id="Lucario-Exclusive"></p></td>
+				<td><p id="Lucario-Description"></p></td>
+				<td><p id="Lucario-Rarity"></p></td>
+				<td><input id="Lucario-Checked" type="checkbox" name="have" onclick="updateOwnership('Lucario',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="ToonLink-Number"></p></td>
+				<td><p id="ToonLink-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="ToonLink-Image" class="amiiboImg"></td>
+				<td><p id="ToonLink-GameOrigin"></p></td>
+				<td><p id="ToonLink-DateRelease"></p></td>
+				<td><p id="ToonLink-Wave"></p></td>
+				<td><p id="ToonLink-Exclusive"></p></td>
+				<td><p id="ToonLink-Description"></p></td>
+				<td><p id="ToonLink-Rarity"></p></td>
+				<td><input id="ToonLink-Checked" type="checkbox" name="have" onclick="updateOwnership('ToonLink',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Sheik-Number"></p></td>
+				<td><p id="Sheik-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Sheik-Image" class="amiiboImg"></td>
+				<td><p id="Sheik-GameOrigin"></p></td>
+				<td><p id="Sheik-DateRelease"></p></td>
+				<td><p id="Sheik-Wave"></p></td>
+				<td><p id="Sheik-Exclusive"></p></td>
+				<td><p id="Sheik-Description"></p></td>
+				<td><p id="Sheik-Rarity"></p></td>
+				<td><input id="Sheik-Checked" type="checkbox" name="have" onclick="updateOwnership('Sheik',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Ike-Number"></p></td>
+				<td><p id="Ike-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Ike-Image" class="amiiboImg"></td>
+				<td><p id="Ike-GameOrigin"></p></td>
+				<td><p id="Ike-DateRelease"></p></td>
+				<td><p id="Ike-Wave"></p></td>
+				<td><p id="Ike-Exclusive"></p></td>
+				<td><p id="Ike-Description"></p></td>
+				<td><p id="Ike-Rarity"></p></td>
+				<td><input id="Ike-Checked" type="checkbox" name="have" onclick="updateOwnership('Ike',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Shulk-Number"></p></td>
+				<td><p id="Shulk-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Shulk-Image" class="amiiboImg"></td>
+				<td><p id="Shulk-GameOrigin"></p></td>
+				<td><p id="Shulk-DateRelease"></p></td>
+				<td><p id="Shulk-Wave"></p></td>
+				<td><p id="Shulk-Exclusive"></p></td>
+				<td><p id="Shulk-Description"></p></td>
+				<td><p id="Shulk-Rarity"></p></td>
+				<td><input id="Shulk-Checked" type="checkbox" name="have" onclick="updateOwnership('Shulk',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Sonic-Number"></p></td>
+				<td><p id="Sonic-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Sonic-Image" class="amiiboImg"></td>
+				<td><p id="Sonic-GameOrigin"></p></td>
+				<td><p id="Sonic-DateRelease"></p></td>
+				<td><p id="Sonic-Wave"></p></td>
+				<td><p id="Sonic-Exclusive"></p></td>
+				<td><p id="Sonic-Description"></p></td>
+				<td><p id="Sonic-Rarity"></p></td>
+				<td><input id="Sonic-Checked" type="checkbox" name="have" onclick="updateOwnership('Sonic',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="MegaMan-Number"></p></td>
+				<td><p id="MegaMan-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="MegaMan-Image" class="amiiboImg"></td>
+				<td><p id="MegaMan-GameOrigin"></p></td>
+				<td><p id="MegaMan-DateRelease"></p></td>
+				<td><p id="MegaMan-Wave"></p></td>
+				<td><p id="MegaMan-Exclusive"></p></td>
+				<td><p id="MegaMan-Description"></p></td>
+				<td><p id="MegaMan-Rarity"></p></td>
+				<td><input id="MegaMan-Checked" type="checkbox" name="have" onclick="updateOwnership('MegaMan',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="KingDedede-Number"></p></td>
+				<td><p id="KingDedede-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="KingDedede-Image" class="amiiboImg"></td>
+				<td><p id="KingDedede-GameOrigin"></p></td>
+				<td><p id="KingDedede-DateRelease"></p></td>
+				<td><p id="KingDedede-Wave"></p></td>
+				<td><p id="KingDedede-Exclusive"></p></td>
+				<td><p id="KingDedede-Description"></p></td>
+				<td><p id="KingDedede-Rarity"></p></td>
+				<td><input id="KingDedede-Checked" type="checkbox" name="have" onclick="updateOwnership('KingDedede',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="MetaKnight-Number"></p></td>
+				<td><p id="MetaKnight-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="MetaKnight-Image" class="amiiboImg"></td>
+				<td><p id="MetaKnight-GameOrigin"></p></td>
+				<td><p id="MetaKnight-DateRelease"></p></td>
+				<td><p id="MetaKnight-Wave"></p></td>
+				<td><p id="MetaKnight-Exclusive"></p></td>
+				<td><p id="MetaKnight-Description"></p></td>
+				<td><p id="MetaKnight-Rarity"></p></td>
+				<td><input id="MetaKnight-Checked" type="checkbox" name="have" onclick="updateOwnership('MetaKnight',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Robin-Number"></p></td>
+				<td><p id="Robin-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Robin-Image" class="amiiboImg"></td>
+				<td><p id="Robin-GameOrigin"></p></td>
+				<td><p id="Robin-DateRelease"></p></td>
+				<td><p id="Robin-Wave"></p></td>
+				<td><p id="Robin-Exclusive"></p></td>
+				<td><p id="Robin-Description"></p></td>
+				<td><p id="Robin-Rarity"></p></td>
+				<td><input id="Robin-Checked" type="checkbox" name="have" onclick="updateOwnership('Robin',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Lucina-Number"></p></td>
+				<td><p id="Lucina-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Lucina-Image" class="amiiboImg"></td>
+				<td><p id="Lucina-GameOrigin"></p></td>
+				<td><p id="Lucina-DateRelease"></p></td>
+				<td><p id="Lucina-Wave"></p></td>
+				<td><p id="Lucina-Exclusive"></p></td>
+				<td><p id="Lucina-Description"></p></td>
+				<td><p id="Lucina-Rarity"></p></td>
+				<td><input id="Lucina-Checked" type="checkbox" name="have" onclick="updateOwnership('Lucina',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Wario-Number"></p></td>
+				<td><p id="Wario-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Wario-Image" class="amiiboImg"></td>
+				<td><p id="Wario-GameOrigin"></p></td>
+				<td><p id="Wario-DateRelease"></p></td>
+				<td><p id="Wario-Wave"></p></td>
+				<td><p id="Wario-Exclusive"></p></td>
+				<td><p id="Wario-Description"></p></td>
+				<td><p id="Wario-Rarity"></p></td>
+				<td><input id="Wario-Checked" type="checkbox" name="have" onclick="updateOwnership('Wario',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Charizard-Number"></p></td>
+				<td><p id="Charizard-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Charizard-Image" class="amiiboImg"></td>
+				<td><p id="Charizard-GameOrigin"></p></td>
+				<td><p id="Charizard-DateRelease"></p></td>
+				<td><p id="Charizard-Wave"></p></td>
+				<td><p id="Charizard-Exclusive"></p></td>
+				<td><p id="Charizard-Description"></p></td>
+				<td><p id="Charizard-Rarity"></p></td>
+				<td><input id="Charizard-Checked" type="checkbox" name="have" onclick="updateOwnership('Charizard',authId)"></td>
+			</tr>
+			<tr>
+				<td><p id="Ness-Number"></p></td>
+				<td><p id="Ness-Name"></p></td>
+				<!-- <td>Image</td> -->
+				<td><img id="Ness-Image" class="amiiboImg"></td>
+				<td><p id="Ness-GameOrigin"></p></td>
+				<td><p id="Ness-DateRelease"></p></td>
+				<td><p id="Ness-Wave"></p></td>
+				<td><p id="Ness-Exclusive"></p></td>
+				<td><p id="Ness-Description"></p></td>
+				<td><p id="Ness-Rarity"></p></td>
+				<td><input id="Ness-Checked" type="checkbox" name="have" onclick="updateOwnership('Ness',authId)"></td>
+			</tr>
+		</tbody>
 	</table>
 
 	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>

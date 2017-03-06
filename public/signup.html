@@ -18,9 +18,9 @@
 		<h1 class="textLine_1">Sign Up</h1>
 		
 		<form class="textLine_1">
-	    	Username:<br>
+	    	<!-- Username:<br>
 	    	<input id="username" class="inputText" type="text" name="username">
-	    	<br>
+	    	<br> -->
 		E-Mail Address:<br>
 	    	<input id="email" class="inputText" type="email" name="email">
 	    	<br>
@@ -52,7 +52,7 @@
 		// Sign-Up Button is pressed
 		function signUpUserData(){
 			// Collect values from the page
-			var username = document.querySelector('#username').value;
+			//var username = document.querySelector('#username').value;
 			var password = document.querySelector('#password').value;
 			var repassword = document.querySelector('#repassword').value;
 			var email = document.querySelector('#email').value;
@@ -71,7 +71,7 @@
 				firebase.auth().onAuthStateChanged(function (user) {
 					if(user) {
 						alert("Successfully signed up!");
-						writeNewUserData(username, password, user.uid);
+						writeNewUserData(password, user.uid);
 						window.location.href='indexsignedin.html';
 					} 
 				});

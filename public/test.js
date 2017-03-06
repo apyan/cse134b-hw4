@@ -1,7 +1,6 @@
 // Initiate and writes a new user data
-function writeNewUserData(userId, password, authId) {
+function writeNewUserData(password, authId) {
 	firebase.database().ref().child('users/' + authId).set({
-		username: userId,
 		customList: {
 			"0-Custom": {
 				DateRelease : 0,

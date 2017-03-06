@@ -47,7 +47,7 @@
 	    	Have:<br>
 	    	<input class="inputText" type="checkbox" id="have">
 	    	<br>
-	    	<input class="modButton" type="button" value="AddAmiibo" onclick="addAmiibo(userId)">
+	    	<input class="modButton" type="button" value="AddAmiibo" onclick="addAmiibo(authId)">
 		</form> 
 	</div>
 
@@ -64,12 +64,13 @@
   		};
   		firebase.initializeApp(config);
 
+  		var customStorageRef = firebase.storage().ref();
 		// Authenticate user if user is signed in
-  		var userId;
+		var authId;
 		firebase.auth().onAuthStateChanged(function (user) {
 			if(user) {
 				// User is signed in
-				userId = user.uid;
+				authId = user.uid;
 			} else {
 				// No user is signed in, then redirect to "index.html"
 				// For security reasons

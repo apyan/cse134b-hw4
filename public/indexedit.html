@@ -84,6 +84,11 @@
 			imageInput.id = object[p]["Name"] + "-Image";
 			imageInput.style.width = "100%";
 	    	imageTD.appendChild(imageInput);
+	    	var newImageInput = document.createElement("input");
+	    	newImageInput.type = "file";
+	    	newImageInput.accept = "image/*";
+	    	newImageInput.id = object[p]["Name"] + "-NewImage";
+	    	imageTD.appendChild(newImageInput);
 			nodeTR.appendChild(imageTD);
 
 			var gameOriginTD = document.createElement("TD");
@@ -146,38 +151,112 @@
 	  	  }
 		}
 
+		var uploaded = 0;
+		var pictureCustomRef;
+		var downloadURL;
+		var number;
+		var name;
+		var origin;
+		var date;
+		var wave;
+		var exclusive;
+		var description;
+		var rarity;
+		var have; 
+		function waitForURLEdit() {
+		    if(downloadURL===null) {//we want it to match
+		        setTimeout(waitForURLEdit, 50);//wait 50 millisecnds then recheck
+		        return;
+		    }
+		    firebase.database().ref().child("users/" + authId + "/customList/" + number + "-" + name).set({
+		        DateRelease: date,
+		        Description: description,
+		        Exclusive: exclusive,
+		        GameOrigin: origin,
+		        Image: downloadURL,
+		        Name: name,
+		        Number: number,
+		        Rarity: rarity,
+		        Wave: wave,
+		        Have: have
+		    });
+		}
+		function waitToUploadEdit() {
+			alert("waiting");
+    		if(uploaded!=1) {//we want it to match
+		        setTimeout(waitToUploadEdit, 50);//wait 50 millisecnds then recheck
+		        return;
+		    }
+		    alert("in");
+		    pictureCustomRef.getDownloadURL().then(function(url){
+		    	downloadURL = url;
+		    });
+		    waitForURLEdit();
+		}
 		function editAmiibo(object){
 			for (var p in object) {
   	  			if(p === "0-Custom"){
   	  				continue;
   	  			}
-  	  			var firebaseDeleteRef = firebase.database().ref().child("users").child(authId).child("customList").child(object[p]["Number"] + "-" +  object[p]["Name"]);
-  	  			firebaseDeleteRef.remove();
   	  			
-  	  			var number = document.getElementById(object[p]["Name"] + "-Number").value;
-				var name = document.getElementById(object[p]["Name"] + "-Name").value;
-				var origin = document.getElementById(object[p]["Name"] + "-GameOrigin").value;
-				var date = document.getElementById(object[p]["Name"] + "-DateRelease").value;
-				var wave = document.getElementById(object[p]["Name"] + "-Wave").value;
-				var exclusive = document.getElementById(object[p]["Name"] + "-Exclusive").value;
-				var description = document.getElementById(object[p]["Name"] + "-Description").value;
-				var rarity = document.getElementById(object[p]["Name"] + "-Rarity").value;
-				var have = document.getElementById(object[p]["Name"] + "-Have").checked;
+  	  			//add all into database
+  	  			downloadURL = null;
+  	  			var file;
+  	  			var image = document.getElementById(object[p]["Name"] + "-NewImage");
+  	  			var imageOld = document.getElementById(object[p]["Name"] + "-Image");
 
-				// change customList1 to customList
-				firebase.database().ref().child("users/" + authId + "/customList/" + number + "-" + name).set({
-					DateRelease: date,
-					Description: description,
-					Exclusive: exclusive,
-			        GameOrigin: origin,
-			        Image: "https://firebasestorage.googleapis.com/v0/b/amiibodex.appspot.com/o/Original-Amiibo%2F11_kirby.jpg?alt=media&token=b1dfb09b-8185-4d9a-9d23-ab04e7e89cd4",
-			        Name: name,
-			       	Number: number,
-			       	Rarity: rarity,
-			       	Wave: wave,
-			        Have: have
-				});
+  	  			if("files" in image) {
+  	  				file = image.files[0];
+  	  			} 
+  	  			if(file == null){
+  	  				var firebaseDeleteRef = firebase.database().ref().child("users").child(authId).child("customList").child(object[p]["Number"] + "-" +  object[p]["Name"]);
+	  	  			firebaseDeleteRef.remove();
+
+  	  				downloadURL = imageOld.src;
+  	  				number = document.getElementById(object[p]["Name"] + "-Number").value;
+					name = document.getElementById(object[p]["Name"] + "-Name").value;
+					origin = document.getElementById(object[p]["Name"] + "-GameOrigin").value;
+					date = document.getElementById(object[p]["Name"] + "-DateRelease").value;
+					wave = document.getElementById(object[p]["Name"] + "-Wave").value;
+					exclusive = document.getElementById(object[p]["Name"] + "-Exclusive").value;
+					description = document.getElementById(object[p]["Name"] + "-Description").value;
+					rarity = document.getElementById(object[p]["Name"] + "-Rarity").value;
+					have = document.getElementById(object[p]["Name"] + "-Have").checked;
+					waitForURLEdit();
+					
+  	  			}
+  	  			else{
+  	  				alert(file.name);
+	  	  			var customStorageRef = firebase.storage().ref();
+	  	  			var pictureRef = customStorageRef.child(file.name);
+	  	  			pictureCustomRef = customStorageRef.child("Custom-Amiibo/" + authId + "/" + file.name);
+	    			pictureRef.name === pictureCustomRef.name;
+				    pictureRef.fullPath === pictureCustomRef.fullPath;
+				   	uploaded = 0;
+
+				    pictureCustomRef.put(file).then(function(snapshot){
+				    	uploaded = 1;
+				    });
+
+	  	  			number = document.getElementById(object[p]["Name"] + "-Number").value;
+					name = document.getElementById(object[p]["Name"] + "-Name").value;
+					origin = document.getElementById(object[p]["Name"] + "-GameOrigin").value;
+					date = document.getElementById(object[p]["Name"] + "-DateRelease").value;
+					wave = document.getElementById(object[p]["Name"] + "-Wave").value;
+					exclusive = document.getElementById(object[p]["Name"] + "-Exclusive").value;
+					description = document.getElementById(object[p]["Name"] + "-Description").value;
+					rarity = document.getElementById(object[p]["Name"] + "-Rarity").value;
+					have = document.getElementById(object[p]["Name"] + "-Have").checked;
+
+				    
+				    waitToUploadEdit();
+
+					// remove all from database
+	  	  			var firebaseDeleteRef = firebase.database().ref().child("users").child(authId).child("customList").child(object[p]["Number"] + "-" +  object[p]["Name"]);
+	  	  			firebaseDeleteRef.remove();
+	  	  		}
   	  		}
+  	  		alert("finished editing");
 		}
 
 		function editAmiiboClick() {

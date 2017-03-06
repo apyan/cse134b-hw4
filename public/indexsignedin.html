@@ -520,8 +520,7 @@
   		firebase.initializeApp(config);
 
 		// Displays the amiibo objects onto the table
-		function printObject(object) {
-			var out = '';
+		function displayCustomAmiibo(object) {
 			for(var p in object) {
 				// Ignore the first element
 				if(p === "0-Custom") {
@@ -602,7 +601,7 @@
 					markOwnership(item, index, authId);
 				});
 				firebaseCustomRef.once("value",function(snapshot){
-					printObject(snapshot.val());
+					displayCustomAmiibo(snapshot.val());
 				});	
     			} else {
 				// No user is signed in, redirect back to "index.html"

@@ -531,6 +531,7 @@
 					continue;
 				}
 				customAmiiboList.push(object[p]["Number"]);
+				
 				// Create a format HTML element for each amiibo
 				// Create a TD section for Number
 				var node = document.createElement("TR");
@@ -586,10 +587,11 @@
 				var have = document.createElement("TD");
 				var objectHave = document.createElement("input");
 				objectHave.type = "checkbox";
+				objectHave.class = (object[p]["Number"] + "-" + object[p]["Name"]);
 				objectHave.id = (object[p]["Name"] + "-Checked");
 				objectHave.checked = object[p]["Have"];
 				objectHave.onclick = function() {
-					updateOwnershipCustom(object[p]["Number"] + "-" + object[p]["Name"], authId);
+					updateOwnershipCustom(this.class, authId);
 				};
 				have.appendChild(objectHave);
 				node.appendChild(have);

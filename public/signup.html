@@ -34,68 +34,54 @@
 	    	<input id="sign-up" class="modButton" type="button" value="Sign Up" onclick="signUpUserData()"/>
 		</form>
 		<p id="sign-up-status"> </p>
-		<!-- <br><p id="test"></p> -->
 	</div>
-  <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyD3p9hdIYoCSi72wUMbPT-JkIzXPf6Xmrc",
-      authDomain: "amiibodex.firebaseapp.com",
-      databaseURL: "https://amiibodex.firebaseio.com",
-      storageBucket: "amiibodex.appspot.com",
-      messagingSenderId: "582801923363"
-    };
-    firebase.initializeApp(config);
 
-    // Testing Sign-Up Button
-    //var messagesRef = new Firebase('https://amiibodex.firebaseio.com/users');
+	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+	<script>
 
-    // Sign-Up Button is pressed
-    function signUpUserData(){
+  		// Initialize Firebase with the AmiiboDex specs
+  		var config = {
+    			apiKey: "AIzaSyD3p9hdIYoCSi72wUMbPT-JkIzXPf6Xmrc",
+    			authDomain: "amiibodex.firebaseapp.com",
+    			databaseURL: "https://amiibodex.firebaseio.com",
+    			storageBucket: "amiibodex.appspot.com",
+    			messagingSenderId: "582801923363"
+  		};
+  		firebase.initializeApp(config);
 
-        // Test Statements
-        //document.getElementById("test").innerHTML = "Creating user...";
+		// Sign-Up Button is pressed
+		function signUpUserData(){
+			// Collect values from the page
+			var username = document.querySelector('#username').value;
+			var password = document.querySelector('#password').value;
+			var repassword = document.querySelector('#repassword').value;
+			var email = document.querySelector('#email').value;
 
-        var username = document.querySelector('#username').value;
-        var password = document.querySelector('#password').value;
-	var repassword = document.querySelector('#repassword').value;
-        var email = document.querySelector('#email').value;
+			// Checks if password and re-password are properly similar
+			if(password.localeCompare(repassword) == 0){
+				// Working Email and Password sign-in (Check Authentication -> Users)
+				firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+					// Handle Errors here.
+					var errorCode = error.code;
+					var errorMessage = error.message;
+					document.getElementById("sign-up-status").innerHTML = "Error: " + error.message;
+				});
 
-        // Test Statements
-        //document.getElementById("test").innerHTML = username + " " + password + " " + email;
+				// Authenticate user if user is signed in
+				firebase.auth().onAuthStateChanged(function (user) {
+					if(user) {
+						alert("Successfully signed up!");
+						writeNewUserData(username, password, user.uid);
+						window.location.href='indexsignedin.html';
+					} 
+				});
+			} else {
+				// Indicates error for non-matching passwords
+				document.getElementById("sign-up-status").innerHTML = "Error: The two passwords must match.";
+			}
+		}
 
-	// Checks if password and re-password are properly similar
-	if(password.localeCompare(repassword) == 0){
-        // Working Email and Password sign-in (Check Authentication -> Users)
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          /*if (errorCode == 'auth/weak-password') {
-		//alert('The password is too weak.');
-          }*/
-		document.getElementById("sign-up-status").innerHTML = "Error: " + error.message;
-        });
-
-	// Authenticate User
-        firebase.auth().onAuthStateChanged(function (user) {
-          if(user) {
-              //document.getElementById("test").innerHTML = "TRUE: " + user.email;
-              alert("Successfully signed up!");
-
-		/* Please delete the two alert messages in there! */
-              writeNewUserData(username, password, user.uid);
-              window.location.href='indexsignedin.html';
-          } 
-        });
-	} else {
-		document.getElementById("sign-up-status").innerHTML = "Error: The two passwords must match.";
-	}
-      } // signUpUserData() ends
-
-  </script>
-
-  <script type="text/javascript" src="test.js"></script>
+	</script>
+	<script type="text/javascript" src="test.js"></script>
   </body>
 </html>

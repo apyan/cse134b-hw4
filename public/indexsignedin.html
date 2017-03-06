@@ -522,6 +522,7 @@
   		};
   		firebase.initializeApp(config);
 
+  		var customAmiiboList = [];
 		// Displays the amiibo objects onto the table
 		function displayCustomAmiibo(object) {
 			for(var p in object) {
@@ -529,6 +530,7 @@
 				if(p === "0-Custom") {
 					continue;
 				}
+				customAmiiboList.push(object[p]["Number"]);
 				// Create a format HTML element for each amiibo
 				// Create a TD section for Number
 				var node = document.createElement("TR");
@@ -586,6 +588,9 @@
 				objectHave.type = "checkbox";
 				objectHave.id = (object[p]["Name"] + "-Checked");
 				objectHave.checked = object[p]["Have"];
+				objectHave.onclick = function() {
+					updateOwnershipCustom(object[p]["Number"] + "-" + object[p]["Name"], authId);
+				};
 				have.appendChild(objectHave);
 				node.appendChild(have);
 				document.getElementById("customAmiiboTable").appendChild(node);
@@ -595,22 +600,25 @@
 		// Authenticate user if user is signed in
 		var authId;
 		firebase.auth().onAuthStateChanged(function (user) {
-    			if(user) {
-				// User is signed in
-				document.getElementById("greeting-line").innerHTML = "Welcome, " + user.email + "!";
-				authId = user.uid;
-				var firebaseCustomRef = firebase.database().ref().child("users").child(authId).child("customList");
-				characters.forEach(function(item, index) {
-					markOwnership(item, index, authId);
-				});
-				firebaseCustomRef.once("value",function(snapshot){
-					displayCustomAmiibo(snapshot.val());
-				});	
-    			} else {
-				// No user is signed in, redirect back to "index.html"
-				window.location.href='index.html';
-			}
-		});
+    		if(user) {
+			// User is signed in
+			document.getElementById("greeting-line").innerHTML = "Welcome, " + user.email + "!";
+			authId = user.uid;
+			var firebaseCustomRef = firebase.database().ref().child("users").child(authId).child("customList");
+			characters.forEach(function(item, index) {
+				markOwnership(item, index, authId);
+			});
+			firebaseCustomRef.once("value",function(snapshot){
+				displayCustomAmiibo(snapshot.val());
+			});	
+			customAmiiboList.forEach(function(item, index) {
+				markOwnershipCustom(item,index, authId);
+			});
+    		} else {
+			// No user is signed in, redirect back to "index.html"
+			window.location.href='index.html';
+		}
+	});
 
 	</script>
 	<script type="text/javascript" src="test.js"></script>

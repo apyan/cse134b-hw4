@@ -81,13 +81,34 @@ function updateOwnership(character, userId) {
 	var userAmiiboRef = firebase.database().ref().child("users").child(userId).child("originalList").child(character);
 	var value;
 	userAmiiboRef.on('value', function(snapshot){
-    		value = snapshot.val();
+    	value = snapshot.val();
   	});
 
 	var updates = {};  
 	updates["/users/" + userId + "/originalList/" + character] = !value;
 	document.getElementById(character + "-Checked").checked = !value;
 	firebase.database().ref().update(updates); 
+}
+
+var valueCustom = null;
+function waitToFinishCustom(character, userId) {
+    if(valueCustom==null) {//we want it to match
+        setTimeout(function() {waitToFinishCustom(character, userId)}, 50);//wait 50 millisecnds then recheck
+        return;
+    }
+    var updates = {};
+	updates["/users/" + userId + "/customList/" + character + "/Have"] = !valueCustom;
+  	firebase.database().ref().update(updates); 
+  	valueCustom = null;
+}
+function updateOwnershipCustom(character, userId) {
+	// User's original amiibo list
+	var userAmiiboRefCustom = firebase.database().ref().child("users").child(userId).child("customList").child(character).child("Have");
+	valueCustom = null;
+	userAmiiboRefCustom.on('value', function(snapshot){
+    	valueCustom = snapshot.val();
+  	});
+  	waitToFinishCustom(character, userId);
 }
 
 var numberOfAmiibo = 0;
@@ -212,6 +233,19 @@ waitToFinish2();
 
 // Marks the Ownership
 function markOwnership(item, index, userId) {
+	// Skip the 0 index
+	if(item === "SkipThis" ) {
+		return;
+	}
+	// Validates Ownership
+	var ownership = document.getElementById(item + "-Checked");
+	var userOwnershipRef = firebase.database().ref().child("users").child(userId).child("originalList").child(item);
+	userOwnershipRef.on('value', function(snapshot){
+		ownership.checked = snapshot.val();
+	});
+}
+
+function markOwnershipCustom(item, index, userId) {
 	// Skip the 0 index
 	if(item === "SkipThis" ) {
 		return;

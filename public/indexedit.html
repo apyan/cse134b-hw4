@@ -193,18 +193,23 @@
 		    });
 		    waitForURLEdit();
 		}
+		var customCounter = 0;
+		var customSoFar = 0;
+		function countCustom(object){
+			for(var p in object){
+				customCounter++;
+			}
+		}
 		function editAmiibo(object){
 			for (var p in object) {
   	  			if(p === "0-Custom"){
   	  				continue;
   	  			}
-  	  			
   	  			//add all into database
   	  			downloadURL = null;
   	  			var file;
   	  			var image = document.getElementById(object[p]["Name"] + "-NewImage");
   	  			var imageOld = document.getElementById(object[p]["Name"] + "-Image");
-
   	  			if("files" in image) {
   	  				file = image.files[0];
   	  			} 
@@ -254,13 +259,19 @@
 					// remove all from database
 	  	  			var firebaseDeleteRef = firebase.database().ref().child("users").child(authId).child("customList").child(object[p]["Number"] + "-" +  object[p]["Name"]);
 	  	  			firebaseDeleteRef.remove();
+	  	  			customSoFar++;
 	  	  		}
   	  		}
-  	  		alert("finished editing");
+  	  		if(customCounter === customSoFar){
+  	  			window.location.href = "indexsignedin.html";
+  	  		}
 		}
 
 		function editAmiiboClick() {
 			firebaseCustomRef = firebase.database().ref().child("users").child(authId).child("customList");
+			firebaseCustomRef.once("value",function(snapshot){
+				countCustom(snapshot.val());
+			});
 			firebaseCustomRef.once("value",function(snapshot){
 				editAmiibo(snapshot.val());
 			});

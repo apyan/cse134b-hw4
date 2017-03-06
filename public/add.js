@@ -58,28 +58,42 @@ function addAmiibo(authId) {
     if ("files" in image) {
     	file = image.files[0];
     } 
+    if(file == null){
+        downloadURL = "file://null";
+        number = document.getElementById("number").value;
+        name = document.getElementById("name").value;
+        origin = document.getElementById("origin").value;
+        date = document.getElementById("date").value;
+        wave = document.getElementById("wave").value;
+        exclusive = document.getElementById("exclusive").value;
+        description = document.getElementById("description").value;
+        rarity = document.getElementById("rarity").value;
+        have = document.getElementById("have").checked;
+        waitForURL();
+    }
+    else{
+        var pictureRef = customStorageRef.child(file.name);
+        pictureCustomRef = customStorageRef.child("Custom-Amiibo/" + authId + "/" + file.name);
 
-    var pictureRef = customStorageRef.child(file.name);
-    pictureCustomRef = customStorageRef.child("Custom-Amiibo/" + authId + "/" + file.name);
+        pictureRef.name === pictureCustomRef.name;
+        pictureRef.fullPath === pictureCustomRef.fullPath;
+       	uploaded = 0;
+        pictureCustomRef.put(file).then(function(snapshot){
+        	uploaded = 1;
+        });
 
-    pictureRef.name === pictureCustomRef.name;
-    pictureRef.fullPath === pictureCustomRef.fullPath;
-   	uploaded = 0;
-    pictureCustomRef.put(file).then(function(snapshot){
-    	uploaded = 1;
-    });
-
-    downloadURL = null;
-    waitToUpload();
-    
-	number = document.getElementById("number").value;
-	name = document.getElementById("name").value;
-	origin = document.getElementById("origin").value;
-	date = document.getElementById("date").value;
-	wave = document.getElementById("wave").value;
-	exclusive = document.getElementById("exclusive").value;
-	description = document.getElementById("description").value;
-	rarity = document.getElementById("rarity").value;
-	have = document.getElementById("have").checked;
+        downloadURL = null;
+        waitToUpload();
+        
+    	number = document.getElementById("number").value;
+    	name = document.getElementById("name").value;
+    	origin = document.getElementById("origin").value;
+    	date = document.getElementById("date").value;
+    	wave = document.getElementById("wave").value;
+    	exclusive = document.getElementById("exclusive").value;
+    	description = document.getElementById("description").value;
+    	rarity = document.getElementById("rarity").value;
+    	have = document.getElementById("have").checked;
+    }
 
 }

@@ -49,6 +49,63 @@
   		};
   		firebase.initializeApp(config);
 
+  		function writeNewUserData(password, authId) {
+			firebase.database().ref().child('users/' + authId).set({
+				customList: {
+					"0-Custom": {
+						DateRelease : 0,
+						Description : false,
+						Exclusive: false,
+						GameOrigin: false,
+						Image: false,
+						Name: false,
+						Number: false,
+						Rarity: false,
+						Wave: false,
+						Owned: false
+					}
+				},    
+				password: password,
+				authenticationId: authId,
+				originalList: {
+					Mario: false, 
+					Peach: false,
+					Yoshi: false,
+					DonkeyKong: false,
+					Link: false,
+					Fox: false,
+					Samus: false,
+					WiiFitTrainer: false,
+					Villager: false,
+					Pikachu: false,
+					Kirby: false,
+					Marth: false,
+					Zelda: false,
+					DiddyKong: false,
+					Luigi: false,
+					LittleMac: false,
+					Pit: false,
+					CaptainFalcon: false,
+					"Rosalina&Luma": false,
+					Bowser: false,
+					Lucario: false,
+					ToonLink: false,
+					Sheik: false,
+					Ike: false,
+					Shulk: false,
+					Sonic: false,
+					MegaMan: false,
+					KingDedede: false,
+					MetaKnight: false,
+					Robin: false,
+					Lucina: false,
+					Wario: false,
+					Charizard: false,
+					Ness: false
+		    		}
+		  	});
+		}
+  		
 		// Sign-Up Button is pressed
 		function signUpUserData(){
 			// Collect values from the page
@@ -82,6 +139,5 @@
 		}
 
 	</script>
-	<script type="text/javascript" src="test.js"></script>
   </body>
 </html>
